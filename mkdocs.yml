@@ -1,0 +1,85 @@
+# Copyright 2026 Fraunhofer AISEC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+site_name: QACE SDK
+site_description: Quantum Circuit Execution SDK
+repo_url: https://github.com/Fraunhofer-AISEC/qace-sdk
+
+theme:
+  name: readthedocs
+  language: en
+  highlightjs: true
+
+plugins:
+  - search
+  - mermaid2
+  - include-markdown
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: true
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            show_source: true
+            show_bases: true
+            members_order: source
+            merge_init_into_class: true
+            show_root_heading: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - API Reference:
+      - Execution Layer:
+        - Overview: execution/index.md
+        - Base: execution/base.md
+        - Aer Executor: execution/aer.md
+        - IBM Runtime Executor: execution/ibm_runtime.md
+        - Iterative Executor: execution/iterative.md
+      - Algorithm Layer:
+        - Overview: algorithm/index.md
+        - Base: algorithm/base.md
+        - Correlation Extraction: algorithm/cea.md
+        - Stochastic Identification via Thresholding: algorithm/sith.md
+        - Preimage: algorithm/preimage.md
+      - Vectorial Boolean Function (VBF) Layer:
+          - Overview: vbf/index.md
+          - VBF: vbf/vbf.md
+          - Random: vbf/random_vbf.md
+          - Lookup Table: vbf/lookup_table.md
+          - Rijndael_s_box: vbf/rijndael_s_box.md
+          - XOR-Cipher: vbf/xor_cipher.md
+          - Biased Function RS: vbf/biased_rs.md
+          - Binary: vbf/binary.md
+          - Circuit Conventions: vbf/circuit_conventions.md
