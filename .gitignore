@@ -1,0 +1,4 @@
+**.pyc
+.idea
+.venv
+/docs/.plantuml-cache/*

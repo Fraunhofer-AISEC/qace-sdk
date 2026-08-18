@@ -1,0 +1,5 @@
+NOTICE for requests-2.34.2
+------------------------------------------------------------------------
+
+Requests
+Copyright 2019 Kenneth Reitz
