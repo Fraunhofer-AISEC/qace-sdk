@@ -1,0 +1,2588 @@
+<!DOCTYPE html><html class="writer-html5" lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" href="../img/favicon.ico">
+    <title>Overview - QACE SDK</title>
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/theme_extra.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet">
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Overview";
+        var mkdocs_page_input_path = "algorithm/index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> QACE SDK
+        </a><div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here">
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal">Execution Layer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../execution/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../execution/base/">Base</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../execution/aer/">Aer Executor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../execution/ibm_runtime/">IBM Runtime Executor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../execution/iterative/">Iterative Executor</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current">Algorithm Layer</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Overview</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#public-api">Public API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#qace.algorithm">algorithm</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm.__all__">__all__</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm.QuantumAlgorithm">QuantumAlgorithm</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm.AlgorithmResult">AlgorithmResult</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm.CorrelationExtraction">CorrelationExtraction</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm.CorrelationExtractionResult">CorrelationExtractionResult</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm.QuantumAmplitudeAmplification">QuantumAmplitudeAmplification</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm.QAAConfig">QAAConfig</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm.QAAResult">QAAResult</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm.PreimageConfig">PreimageConfig</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm.PreimageResult">PreimageResult</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm.Preimage">Preimage</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm.SITHContext">SITHContext</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm.SITHAlgorithm">SITHAlgorithm</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm.build_phase_flip_x_circuit">build_phase_flip_x_circuit</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="base/">Base</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="cea/">Correlation Extraction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="sith/">Stochastic Identification via Thresholding</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="preimage/">Preimage</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal">Vectorial Boolean Function (VBF) Layer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../vbf/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../vbf/vbf/">VBF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../vbf/random_vbf/">Random</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../vbf/lookup_table/">Lookup Table</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../vbf/rijndael_s_box/">Rijndael_s_box</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../vbf/xor_cipher/">XOR-Cipher</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../vbf/biased_rs/">Biased Function RS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../vbf/binary/">Binary</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../vbf/circuit_conventions/">Circuit Conventions</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">QACE SDK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+          <li class="breadcrumb-item">Algorithm Layer</li>
+      <li class="breadcrumb-item active">Overview</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Fraunhofer-AISEC/qace-sdk/edit/master/docs/algorithm/index.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <!--
+Copyright 2026 Fraunhofer AISEC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+--><h1 id="algorithm-layer">Algorithm Layer<a class="headerlink" href="#algorithm-layer" title="Permanent link">¶</a></h1>
+<p>The Algorithm Layer provides quantum algorithm abstractions that build on top of the Execution Layer. Each algorithm constructs a quantum circuit and delegates its execution to an injected <code>CircuitExecutor</code>.</p>
+<h2 id="public-api">Public API<a class="headerlink" href="#public-api" title="Permanent link">¶</a></h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="qace.algorithm" class="doc doc-heading">
+            <code>qace.algorithm</code>
+
+
+<a href="#qace.algorithm" class="headerlink" title="Permanent link">¶</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Public API of the algorithm package.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="qace.algorithm.__all__" class="doc doc-heading">
+            <code class="highlight language-python">__all__ = ['QuantumAlgorithm', 'AlgorithmResult', 'CorrelationExtraction', 'CorrelationExtractionResult', 'QuantumAmplitudeAmplification', 'QAAConfig', 'QAAResult', 'Preimage', 'PreimageConfig', 'PreimageResult', 'build_phase_flip_x_circuit', 'SITHContext', 'SITHAlgorithm']</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#qace.algorithm.__all__" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.algorithm.QuantumAlgorithm" class="doc doc-heading">
+              <code class="highlight language-python">QuantumAlgorithm(executor)</code>
+
+<a href="#qace.algorithm.QuantumAlgorithm" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="abc.ABC">ABC</span></code></p>
+
+
+
+        <p>Abstract base class for all quantum algorithms.</p>
+<p>The CircuitExecutor is injected via the constructor,
+keeping the algorithm decoupled from the backend.</p>
+
+        <p>Initializes the algorithm with a circuit executor.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>executor</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="CircuitExecutor() (qace.execution.CircuitExecutor)" href="../execution/#qace.execution.CircuitExecutor">CircuitExecutor</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The CircuitExecutor instance used to run the
+constructed quantum circuit.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/algorithm/_base.py</code></summary>
+                    <pre class="highlight"><code class="language-python">def __init__(self, executor: CircuitExecutor) -&gt; None:
+    """Initializes the algorithm with a circuit executor.
+
+    Args:
+        executor: The CircuitExecutor instance used to run the
+            constructed quantum circuit.
+    """
+    self._executor = executor</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.algorithm.QuantumAlgorithm.run" class="doc doc-heading">
+            <code class="highlight language-python">run()</code>
+
+<a href="#qace.algorithm.QuantumAlgorithm.run" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Build the circuit and execute it via the injected executor.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="AlgorithmResult(execution_result, metadata=dict())
+
+  
+      dataclass
+   (qace.algorithm._base.AlgorithmResult)" href="base/#qace.algorithm._base.AlgorithmResult">AlgorithmResult</a></code>
+              –
+              <div class="doc-md-description">
+                <p>AlgorithmResult containing ExecutionResult and metadata.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/algorithm/_base.py</code></summary>
+              <pre class="highlight"><code class="language-python">def run(self) -&gt; AlgorithmResult:
+    """Build the circuit and execute it via the injected executor.
+
+    Returns:
+        AlgorithmResult containing ExecutionResult and metadata.
+    """
+    ...</code></pre>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.algorithm.AlgorithmResult" class="doc doc-heading">
+              <code class="highlight language-python">AlgorithmResult(execution_result, metadata=dict())</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+<a href="#qace.algorithm.AlgorithmResult" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>Result of a quantum algorithm execution.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.algorithm.CorrelationExtraction" class="doc doc-heading">
+              <code class="highlight language-python">CorrelationExtraction(executor, vbf)</code>
+
+<a href="#qace.algorithm.CorrelationExtraction" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="QuantumAlgorithm(executor) (qace.algorithm.QuantumAlgorithm)" href="#qace.algorithm.QuantumAlgorithm">QuantumAlgorithm</a></code></p>
+
+
+
+        <p>Correlation Extraction Algorithm (CEA).</p>
+<p>Extracts correlated mask pairs (alpha, beta) from a vectorial Boolean
+function by constructing and sampling from the U_CEA^f circuit.</p>
+
+
+<details class="the-circuit-applies" open="">
+  <summary>The circuit applies</summary>
+  <ol>
+<li>Hadamard on all input qubits</li>
+<li>The function oracle U_f</li>
+<li>Hadamard on all qubits (input + output)</li>
+</ol>
+</details>        <p>Measurement yields mask pairs (alpha, beta) where the correlation
+between alpha and beta reveals structural information about f.</p>
+
+        <p>Initializes the CEA with an executor and a vectorial Boolean function.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>executor</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="CircuitExecutor() (qace.execution.CircuitExecutor)" href="../execution/#qace.execution.CircuitExecutor">CircuitExecutor</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The CircuitExecutor instance used to run the circuit.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>vbf</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="VectorialBooleanFunction(f, m, n) (qace.vbf.VectorialBooleanFunction)" href="../vbf/#qace.vbf.VectorialBooleanFunction">VectorialBooleanFunction</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The VectorialBooleanFunction to analyze.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/algorithm/_cea.py</code></summary>
+                    <pre class="highlight"><code class="language-python">def __init__(self, executor: CircuitExecutor, vbf: VectorialBooleanFunction):
+    """Initializes the CEA with an executor and a vectorial Boolean function.
+
+    Args:
+        executor: The CircuitExecutor instance used to run the circuit.
+        vbf: The VectorialBooleanFunction to analyze.
+    """
+    super().__init__(executor)
+    self.vbf = vbf</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.algorithm.CorrelationExtraction.build_circuit" class="doc doc-heading">
+            <code class="highlight language-python">build_circuit(measure=True)</code>
+
+<a href="#qace.algorithm.CorrelationExtraction.build_circuit" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Build the full CEA circuit including measurement.</p>
+<p>Constructs U_CEA^f followed by measurement on all qubits.
+Qubits are measured in reverse order to ease mask reconstruction.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>
+              –
+              <div class="doc-md-description">
+                <p>A measured QuantumCircuit ready for execution.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/algorithm/_cea.py</code></summary>
+              <pre class="highlight"><code class="language-python">def build_circuit(self, measure=True) -&gt; QuantumCircuit:
+    """Build the full CEA circuit including measurement.
+
+    Constructs U_CEA^f followed by measurement on all qubits.
+    Qubits are measured in reverse order to ease mask reconstruction.
+
+    Returns:
+        A measured QuantumCircuit ready for execution.
+    """
+    m = self.vbf.m
+    n = self.vbf.n
+    num_qubits = m + n
+
+    # Build the core CEA unitary
+    cea_unitary = self.build_cea_unitary()
+
+    # Wrap in a measured circuit
+    circuit = QuantumCircuit(num_qubits)
+    circuit.compose(cea_unitary, qubits=range(num_qubits), inplace=True)
+    if measure:
+        measure_all_msb0(circuit)
+
+    return circuit</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.algorithm.CorrelationExtraction.build_cea_unitary" class="doc doc-heading">
+            <code class="highlight language-python">build_cea_unitary()</code>
+
+<a href="#qace.algorithm.CorrelationExtraction.build_cea_unitary" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Build the CEA unitary U_CEA^f (without measurement).</p>
+<p>Applies H^m, then U_f, then H^(m+n).</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>
+              –
+              <div class="doc-md-description">
+                <p>The unitary CEA circuit.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/algorithm/_cea.py</code></summary>
+              <pre class="highlight"><code class="language-python">def build_cea_unitary(self) -&gt; QuantumCircuit:
+    """Build the CEA unitary U_CEA^f (without measurement).
+
+    Applies H^m, then U_f, then H^(m+n).
+
+    Returns:
+        The unitary CEA circuit.
+    """
+    m = self.vbf.m
+    n = self.vbf.n
+    num_qubits = m + n
+
+    f_circuit = self.vbf.to_circuit()
+
+    cea_circuit = QuantumCircuit(num_qubits)
+    cea_circuit.h(range(m))
+    cea_circuit.compose(f_circuit, qubits=range(num_qubits), inplace=True)
+    cea_circuit.h(range(num_qubits))
+
+    return cea_circuit</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.algorithm.CorrelationExtraction.run" class="doc doc-heading">
+            <code class="highlight language-python">run()</code>
+
+<a href="#qace.algorithm.CorrelationExtraction.run" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Execute the CEA and extract mask pairs from measurement results.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="CorrelationExtractionResult(execution_result, metadata=dict(), mask_pairs=dict())
+
+  
+      dataclass
+   (qace.algorithm._cea.CorrelationExtractionResult)" href="cea/#qace.algorithm._cea.CorrelationExtractionResult">CorrelationExtractionResult</a></code>
+              –
+              <div class="doc-md-description">
+                <p>CorrelationExtractionResult with extracted (alpha, beta) pairs.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/algorithm/_cea.py</code></summary>
+              <pre class="highlight"><code class="language-python">def run(self) -&gt; CorrelationExtractionResult:
+    """Execute the CEA and extract mask pairs from measurement results.
+
+    Returns:
+        CorrelationExtractionResult with extracted (alpha, beta) pairs.
+    """
+    circuit = self.build_circuit()
+    execution_result = self._executor.execute(circuit)
+
+    mask_pairs = self._counts_to_mask_pairs(execution_result.counts)
+
+    return CorrelationExtractionResult(
+        execution_result=execution_result,
+        metadata={},
+        mask_pairs=mask_pairs,
+    )</code></pre>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.algorithm.CorrelationExtractionResult" class="doc doc-heading">
+              <code class="highlight language-python">CorrelationExtractionResult(execution_result, metadata=dict(), mask_pairs=dict())</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+<a href="#qace.algorithm.CorrelationExtractionResult" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="AlgorithmResult(execution_result, metadata=dict())
+
+  
+      dataclass
+   (qace.algorithm.AlgorithmResult)" href="#qace.algorithm.AlgorithmResult">AlgorithmResult</a></code></p>
+
+
+
+        <p>Result of a CEA execution containing extracted mask pairs.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.algorithm.QuantumAmplitudeAmplification" class="doc doc-heading">
+              <code class="highlight language-python">QuantumAmplitudeAmplification(executor, qaa_config)</code>
+
+<a href="#qace.algorithm.QuantumAmplitudeAmplification" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="QuantumAlgorithm(executor) (qace.algorithm.QuantumAlgorithm)" href="#qace.algorithm.QuantumAlgorithm">QuantumAlgorithm</a></code></p>
+
+
+
+        <p>Quantum Amplitude Amplification (QAA) algorithm.</p>
+<p>Implements the QAA algorithm from "Quantum Amplitude Amplification and
+Estimation" by Brassard et al. Supports both the known success probability
+case (deterministic repetition count) and the unknown success probability
+case (exponential search).</p>
+<p>The algorithm iteratively builds circuits with increasing numbers of
+Grover operator applications and measures until a verified result is found.</p>
+
+
+<details class="note" open="">
+  <summary>Note</summary>
+  <p>For correct behavior, the injected executor should NOT use a fixed
+<code>seed_simulator</code> with <code>shots=1</code>, as this would produce identical
+measurement outcomes across iterations, preventing convergence.
+Either omit the seed or use <code>shots &gt; 1</code>. For deterministic executions of QAA
+use the IterativeExecutor as executor.</p>
+</details>
+        <p>Initializes the QAA algorithm.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>executor</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="CircuitExecutor() (qace.execution.CircuitExecutor)" href="../execution/#qace.execution.CircuitExecutor">CircuitExecutor</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The CircuitExecutor instance used to run circuits.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>qaa_config</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="QAAConfig(unitary, grover_circuit, qubit_count, verify, success_prob=None, base=None, seed=None)
+
+  
+      dataclass
+   (qace.algorithm._qaa.QAAConfig)" href="#qace.algorithm.QAAConfig">QAAConfig</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>Configuration containing the unitary, Grover circuit,
+and qubit count.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/algorithm/_qaa.py</code></summary>
+                    <pre class="highlight"><code class="language-python">def __init__(
+    self,
+    executor: CircuitExecutor,
+    qaa_config: QAAConfig,
+):
+    """Initializes the QAA algorithm.
+
+    Args:
+        executor: The CircuitExecutor instance used to run circuits.
+        qaa_config: Configuration containing the unitary, Grover circuit,
+            and qubit count.
+    """
+    super().__init__(executor)
+    self._qaa_config = qaa_config</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.algorithm.QuantumAmplitudeAmplification.build_circuit" class="doc doc-heading">
+            <code class="highlight language-python">build_circuit(repetitions=0)</code>
+
+<a href="#qace.algorithm.QuantumAmplitudeAmplification.build_circuit" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Builds a QAA circuit with the given number of Grover operator applications.</p>
+<p>Constructs a circuit that applies the initial unitary followed by
+<code>repetitions</code> applications of the Grover operator, then measures
+all qubits.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>repetitions</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>0</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Number of times to apply the Grover operator.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>
+              –
+              <div class="doc-md-description">
+                <p>A measured QuantumCircuit ready for execution.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/algorithm/_qaa.py</code></summary>
+              <pre class="highlight"><code class="language-python">def build_circuit(self, repetitions: int = 0) -&gt; QuantumCircuit:
+    """Builds a QAA circuit with the given number of Grover operator applications.
+
+    Constructs a circuit that applies the initial unitary followed by
+    `repetitions` applications of the Grover operator, then measures
+    all qubits.
+
+    Args:
+        repetitions: Number of times to apply the Grover operator.
+
+    Returns:
+        A measured QuantumCircuit ready for execution.
+    """
+    unitary = self._qaa_config.unitary
+    grover_circuit = self._qaa_config.grover_circuit
+    qubit_count = self._qaa_config.qubit_count
+
+    circuit = QuantumCircuit(qubit_count)
+    circuit.compose(unitary, qubits=range(qubit_count), inplace=True)
+    for _ in range(repetitions):
+        circuit.compose(grover_circuit, qubits=range(qubit_count), inplace=True)
+    measure_all_msb0(circuit)
+
+    return circuit</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.algorithm.QuantumAmplitudeAmplification.run" class="doc doc-heading">
+            <code class="highlight language-python">run()</code>
+
+<a href="#qace.algorithm.QuantumAmplitudeAmplification.run" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Executes the QAA algorithm.</p>
+<p>If success_prob is known, computes the optimal number of Grover
+iterations and measures until a verified result is found.
+If unknown, uses exponential search with random iteration counts.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="QAAResult(execution_result, metadata=dict(), verified_results=list(), iterations=0)
+
+  
+      dataclass
+   (qace.algorithm._qaa.QAAResult)" href="#qace.algorithm.QAAResult">QAAResult</a></code>
+              –
+              <div class="doc-md-description">
+                <p>QAAResult containing verified measurement results and metadata.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<details class="note" open="">
+  <summary>Note</summary>
+  <p>This method may run indefinitely if no valid solution exists
+for the given verification function.</p>
+</details>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/algorithm/_qaa.py</code></summary>
+              <pre class="highlight"><code class="language-python">def run(self) -&gt; QAAResult:
+    """Executes the QAA algorithm.
+
+    If success_prob is known, computes the optimal number of Grover
+    iterations and measures until a verified result is found.
+    If unknown, uses exponential search with random iteration counts.
+
+    Returns:
+        QAAResult containing verified measurement results and metadata.
+
+    Note:
+        This method may run indefinitely if no valid solution exists
+        for the given verification function.
+    """
+    # Save the rng state to make it independent of the seed used in this class
+
+    state_backup = random.getstate()
+    random.seed(self._qaa_config.seed)
+
+    if self._qaa_config.success_prob is None:
+        verified_results, execution_result, iterations = (
+            self._run_unknown_probability()
+        )
+    else:
+        verified_results, execution_result, iterations = (
+            self._run_known_probability()
+        )
+
+    # Restore the rng state
+    random.setstate(state_backup)
+
+    return QAAResult(
+        execution_result=execution_result,
+        metadata={"iterations": iterations},
+        verified_results=verified_results,
+        iterations=iterations,
+    )</code></pre>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.algorithm.QAAConfig" class="doc doc-heading">
+              <code class="highlight language-python">QAAConfig(unitary, grover_circuit, qubit_count, verify, success_prob=None, base=None, seed=None)</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+<a href="#qace.algorithm.QAAConfig" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>Circuit configuration for Quantum Amplitude Amplification.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>unitary</code></b>
+                  (<code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The initial unitary quantum circuit to amplify.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>grover_circuit</code></b>
+                  (<code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The Grover operator circuit used for amplification.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>qubit_count</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The total number of qubits in the circuits.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>verify</code></b>
+                  (<code><span title="collections.abc.Callable">Callable</span>[[<span title="int">int</span>], <span title="bool">bool</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>A callable that takes an integer measurement result and
+returns True if it is a valid solution.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>success_prob</code></b>
+                  (<code><span title="float">float</span> | None</code>)
+              –
+              <div class="doc-md-description">
+                <p>If known, the probability of measuring a valid
+result from the initial unitary applied to |0&gt;. Enables
+precomputation of the optimal Grover iteration count.
+If None, the exponential search strategy is used.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>base</code></b>
+                  (<code><span title="float">float</span> | None</code>)
+              –
+              <div class="doc-md-description">
+                <p>Base for exponential increase of the search space per
+iteration. If None, a random value in (1, 2) is chosen.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>seed</code></b>
+                  (<code><span title="int">int</span> | None</code>)
+              –
+              <div class="doc-md-description">
+                <p>Seed for classical random choices in the algorithm
+(base selection and iteration count sampling).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.algorithm.QAAConfig.__post_init__" class="doc doc-heading">
+            <code class="highlight language-python">__post_init__()</code>
+
+<a href="#qace.algorithm.QAAConfig.__post_init__" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Validates configuration constraints.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If base is not in (1, 2).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/algorithm/_qaa.py</code></summary>
+              <pre class="highlight"><code class="language-python">def __post_init__(self):
+    """Validates configuration constraints.
+
+    Raises:
+        ValueError: If base is not in (1, 2).
+    """
+    if self.base is not None and not (1.0 &lt; self.base &lt; 2.0):
+        raise ValueError(
+            f"base must be in the open interval (1, 2), got {self.base}."
+        )</code></pre>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.algorithm.QAAResult" class="doc doc-heading">
+              <code class="highlight language-python">QAAResult(execution_result, metadata=dict(), verified_results=list(), iterations=0)</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+<a href="#qace.algorithm.QAAResult" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="AlgorithmResult(execution_result, metadata=dict())
+
+  
+      dataclass
+   (qace.algorithm.AlgorithmResult)" href="#qace.algorithm.AlgorithmResult">AlgorithmResult</a></code></p>
+
+
+
+        <p>Result of a QAA execution containing verified measurement results.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>verified_results</code></b>
+                  (<code><span title="list">list</span>[<span title="int">int</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>List of integer measurement results that passed
+the verification function.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>iterations</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Number of iterations the algorithm performed before
+finding a verified result.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.algorithm.PreimageConfig" class="doc doc-heading">
+              <code class="highlight language-python">PreimageConfig(vbf, vbf_image, success_prob=None, seed=None, base=None)</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+<a href="#qace.algorithm.PreimageConfig" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>Configuration for the preimage search algorithm.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>vbf</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="VectorialBooleanFunction(f, m, n) (qace.vbf.VectorialBooleanFunction)" href="../vbf/#qace.vbf.VectorialBooleanFunction">VectorialBooleanFunction</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The vectorial Boolean function to find preimages for.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>vbf_image</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The target image value whose preimage is sought.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>success_prob</code></b>
+                  (<code><span title="float">float</span> | None</code>)
+              –
+              <div class="doc-md-description">
+                <p>Optional desired success probability for the algorithm.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>seed</code></b>
+                  (<code><span title="int">int</span> | None</code>)
+              –
+              <div class="doc-md-description">
+                <p>Optional random seed for reproducibility.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>base</code></b>
+                  (<code><span title="float">float</span> | None</code>)
+              –
+              <div class="doc-md-description">
+                <p>Optional base parameter for amplitude amplification scheduling.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.algorithm.PreimageResult" class="doc doc-heading">
+              <code class="highlight language-python">PreimageResult(execution_result, metadata=dict(), verified_results=list(), iterations=0, preimages=list())</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+<a href="#qace.algorithm.PreimageResult" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="QAAResult(execution_result, metadata=dict(), verified_results=list(), iterations=0)
+
+  
+      dataclass
+   (qace.algorithm.QAAResult)" href="#qace.algorithm.QAAResult">QAAResult</a></code></p>
+
+
+
+        <p>Result of a preimage search algorithm execution.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>preimages</code></b>
+                  (<code><span title="list">list</span>[<span title="int">int</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>A list of integer preimage values found during the search.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.algorithm.Preimage" class="doc doc-heading">
+              <code class="highlight language-python">Preimage(executor, preimage_config)</code>
+
+<a href="#qace.algorithm.Preimage" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="QuantumAlgorithm(executor) (qace.algorithm.QuantumAlgorithm)" href="#qace.algorithm.QuantumAlgorithm">QuantumAlgorithm</a></code></p>
+
+
+
+        <p>Abstract base class for all preimage algorithms.</p>
+
+        <p>Initializes the Preimage algorithm instance.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>executor</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="CircuitExecutor() (qace.execution.CircuitExecutor)" href="../execution/#qace.execution.CircuitExecutor">CircuitExecutor</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The circuit executor used to run quantum circuits.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>preimage_config</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="PreimageConfig(vbf, vbf_image, success_prob=None, seed=None, base=None)
+
+  
+      dataclass
+   (qace.algorithm._preimage.PreimageConfig)" href="preimage/#qace.algorithm._preimage.PreimageConfig">PreimageConfig</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>Configuration specifying the vectorial Boolean
+function and target image for the preimage search.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/algorithm/_preimage.py</code></summary>
+                    <pre class="highlight"><code class="language-python">def __init__(
+    self,
+    executor: CircuitExecutor,
+    preimage_config: PreimageConfig,
+):
+    """Initializes the Preimage algorithm instance.
+
+    Args:
+        executor: The circuit executor used to run quantum circuits.
+        preimage_config: Configuration specifying the vectorial Boolean
+            function and target image for the preimage search.
+    """
+    super().__init__(executor)
+    self._preimage_config = preimage_config</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.algorithm.Preimage.run" class="doc doc-heading">
+            <code class="highlight language-python">run()</code>
+
+<a href="#qace.algorithm.Preimage.run" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Executes the preimage search algorithm.</p>
+<p>Constructs the necessary quantum circuits and delegates execution to
+the quantum amplitude amplification subroutine.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="PreimageResult(execution_result, metadata=dict(), verified_results=list(), iterations=0, preimages=list())
+
+  
+      dataclass
+   (qace.algorithm._preimage.PreimageResult)" href="preimage/#qace.algorithm._preimage.PreimageResult">PreimageResult</a></code>
+              –
+              <div class="doc-md-description">
+                <p>A PreimageResult containing the measurement outcome and iteration count.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/algorithm/_preimage.py</code></summary>
+              <pre class="highlight"><code class="language-python">def run(self) -&gt; PreimageResult:
+    """Executes the preimage search algorithm.
+
+    Constructs the necessary quantum circuits and delegates execution to
+    the quantum amplitude amplification subroutine.
+
+    Returns:
+        A PreimageResult containing the measurement outcome and iteration count.
+    """
+    m = self._preimage_config.vbf.m
+    n = self._preimage_config.vbf.n
+    unitary = self._preimage_config.vbf.to_circuit()
+    qubit_count = unitary.num_qubits + 1
+    unitary_extended = QuantumCircuit(qubit_count)
+    unitary_extended.h(range(m))
+    unitary_extended.compose(
+        unitary, qubits=range(unitary.num_qubits), inplace=True
+    )
+    grover_circuit = self._build_grover_circuit(unitary_extended)
+
+    def verify(measured_value):
+        # we use n + 1 here to shift the measured value, because the output uses an auxiliary qubit
+        x = (measured_value &gt;&gt; (n + 1)) &amp; ((1 &lt;&lt; m) - 1)
+        # shift away the auxiliary, then get the output bits
+        y = (measured_value &gt;&gt; 1) &amp; ((1 &lt;&lt; n) - 1)
+
+        return (
+            self._preimage_config.vbf.eval(x) == y
+            and self._preimage_config.vbf_image == y
+        )
+
+    qaa_config = QAAConfig(
+        unitary=unitary_extended,
+        grover_circuit=grover_circuit,
+        qubit_count=qubit_count,
+        verify=verify,
+        success_prob=self._preimage_config.success_prob,
+        base=self._preimage_config.base,
+        seed=self._preimage_config.seed,
+    )
+
+    qaa = QuantumAmplitudeAmplification(
+        executor=self._executor,
+        qaa_config=qaa_config,
+    )
+    result = qaa.run()
+
+    return PreimageResult(
+        execution_result=result.execution_result,
+        metadata=result.metadata,
+        verified_results=result.verified_results,
+        iterations=result.iterations,
+        preimages=[
+            res &gt;&gt; (self._preimage_config.vbf.n + 1)
+            for res in result.verified_results
+        ],
+    )</code></pre>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.algorithm.SITHContext" class="doc doc-heading">
+              <code class="highlight language-python">SITHContext(vbf, tau, l, d, sampling_seed=None, precompute_success_prob=False)</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+<a href="#qace.algorithm.SITHContext" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>Container for the information needed to execute SITH.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>vbf</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="VectorialBooleanFunction(f, m, n) (qace.vbf.VectorialBooleanFunction)" href="../vbf/#qace.vbf.VectorialBooleanFunction">VectorialBooleanFunction</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The Vectorial Boolean Function to analyze.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>m</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Number of input bits of the VBF.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>n</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Number of output bits of the VBF.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>tau</code></b>
+                  (<code><span title="float">float</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Desired bias lower bound.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>l</code></b>
+                  (<code><span title="float">float</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Error bound for the Walsh approximation.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>d</code></b>
+                  (<code><span title="float">float</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Confidence threshold for success of the probabilistic algorithm.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>sample_inputs</code></b>
+                  (<code><span title="list">list</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Sampled input values used for the Walsh approximation.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>sample_outputs</code></b>
+                  (<code><span title="list">list</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>VBF evaluations of the sampled inputs.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>qubit_count</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Total number of qubits used by the SITH circuits.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>approx_reg_qubit_count</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Number of qubits in the Walsh approximation
+register.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>aux_qubit_index</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Index of the auxiliary qubit used for case distinctions.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>approx_reg_range</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Qubit index range covering the Walsh approximation
+register including the two's complement qubit.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>sampling_seed</code></b>
+                  (<code><span title="float">float</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Seed for the sampling and the classical choices made in
+QAA.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>precompute_success_prob</code></b>
+                  (<code><span title="bool">bool</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Whether the procedure should precompute the
+success probability of the iteration count of QAA.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <p>Builds an appropriate context for executing SITH on a VBF.</p>
+<p>This excludes building the CEA and Grover circuits.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>vbf</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="VectorialBooleanFunction(f, m, n) (qace.vbf.VectorialBooleanFunction)" href="../vbf/#qace.vbf.VectorialBooleanFunction">VectorialBooleanFunction</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The VBF.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>tau</code></b>
+                  (<code><span title="float">float</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Desired bias lower bound.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>l</code></b>
+                  (<code><span title="float">float</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Error bound for the Walsh approximation.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>d</code></b>
+                  (<code><span title="float">float</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Confidence threshold for success of the probabilistic algorithm,
+i.e., SITH succeeds with probability &gt;= 1-d.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>sampling_seed</code></b>
+                  (<code><span title="int">int</span> | None</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Seed for the sampling and the classical choices made
+in QAA.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>precompute_success_prob</code></b>
+                  (<code><span title="bool">bool</span></code>, default:
+                      <code>False</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Whether the procedure should precompute
+the success probability of the iteration count of QAA. Infeasible
+for functions with many bits.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code>None</code>
+              –
+              <div class="doc-md-description">
+                <p>SITH context for further use.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/algorithm/_sith.py</code></summary>
+                    <pre class="highlight"><code class="language-python">def __init__(
+    self,
+    vbf: VectorialBooleanFunction,
+    tau: float,
+    l: float,
+    d: float,
+    sampling_seed: int | None = None,
+    precompute_success_prob: bool = False,
+) -&gt; None:
+    """Builds an appropriate context for executing SITH on a VBF.
+
+    This excludes building the CEA and Grover circuits.
+
+    Args:
+        vbf: The VBF.
+        tau: Desired bias lower bound.
+        l: Error bound for the Walsh approximation.
+        d: Confidence threshold for success of the probabilistic algorithm,
+            i.e., SITH succeeds with probability &gt;= 1-d.
+        sampling_seed: Seed for the sampling and the classical choices made
+            in QAA.
+        precompute_success_prob: Whether the procedure should precompute
+            the success probability of the iteration count of QAA. Infeasible
+            for functions with many bits.
+
+    Returns:
+        SITH context for further use.
+    """
+    m, n = (vbf.m, vbf.n)
+
+    random.seed(sampling_seed)
+
+    # Compute the required sample count `S`, which can be higher than `2^m` for low `m`, and sample inputs.
+    s = ceil((log(1 / d) + log(2) + log(1 &lt;&lt; (m + n))) / (2 * l**2))
+    ls = log2(s)
+    approx_reg_qubit_count = ceil(ls)
+    # Check if there are a power of two many samples and add additional qubit to accomodate for e.g. (0, 0) having full approximated correlation.
+    if ls.is_integer():
+        approx_reg_qubit_count += 1
+    sample_inputs = None
+    if s &lt; 1 &lt;&lt; m:
+        sample_inputs = sample(range(1 &lt;&lt; m), s)
+    else:
+        s = 1 &lt;&lt; m
+        approx_reg_qubit_count = m + 1
+        sample_inputs = range(s)
+    # Precompute function values
+    sample_outputs = [vbf.eval(x) for x in sample_inputs]
+
+    # Layout: | Input x | Output f(x) | Auxiliary Qubit for computing the approximate biases and for making the case distinction in the registers | Auxiliary Walsh Approx Register with Qubit for Twos Complement |
+    qubit_count = m + n + 1 + (approx_reg_qubit_count + 1)
+
+    aux_qubit_index = m + n
+    approx_reg_range = range(
+        aux_qubit_index + 1, aux_qubit_index + 1 + (approx_reg_qubit_count + 1)
+    )
+
+    self.vbf = vbf
+    self.m = m
+    self.n = n
+    self.tau = tau
+    self.l = l
+    self.d = d
+    self.sample_inputs = sample_inputs
+    self.sample_outputs = sample_outputs
+    self.qubit_count = qubit_count
+    self.approx_reg_qubit_count = approx_reg_qubit_count
+    self.aux_qubit_index = aux_qubit_index
+    self.approx_reg_range = approx_reg_range
+    self.sampling_seed = sampling_seed
+    self.precompute_success_prob = precompute_success_prob</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.algorithm.SITHAlgorithm" class="doc doc-heading">
+              <code class="highlight language-python">SITHAlgorithm(executor, ctx)</code>
+
+<a href="#qace.algorithm.SITHAlgorithm" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="QuantumAlgorithm(executor) (qace.algorithm.QuantumAlgorithm)" href="#qace.algorithm.QuantumAlgorithm">QuantumAlgorithm</a></code></p>
+
+
+
+        <p>Stochastic Identification via Thresholding (SITH).</p>
+<p>Based on CEA and AA, this algorithm finds mask pairs of a VBF with minimal bias.</p>
+
+        <p>Initializes the SITH with an executor and a context.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>executor</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="CircuitExecutor() (qace.execution.CircuitExecutor)" href="../execution/#qace.execution.CircuitExecutor">CircuitExecutor</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The CircuitExecutor instance used to run the circuit.
+NOTE: Setting shots != 1 leads to a false simulation, since the
+QAA-based algorithm can only sample once per iteration on a real
+quantum computer.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>ctx</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="SITHContext(vbf, tau, l, d, sampling_seed=None, precompute_success_prob=False)
+
+  
+      dataclass
+   (qace.algorithm._sith.SITHContext)" href="sith/#qace.algorithm._sith.SITHContext">SITHContext</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The SITHContext to use, including the VectorialBooleanFunction
+to analyze.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/algorithm/_sith.py</code></summary>
+                    <pre class="highlight"><code class="language-python">def __init__(self, executor: CircuitExecutor, ctx: SITHContext):
+    """Initializes the SITH with an executor and a context.
+
+    Args:
+        executor: The CircuitExecutor instance used to run the circuit.
+            NOTE: Setting shots != 1 leads to a false simulation, since the
+            QAA-based algorithm can only sample once per iteration on a real
+            quantum computer.
+        ctx: The SITHContext to use, including the VectorialBooleanFunction
+            to analyze.
+    """
+    super().__init__(executor)
+    self._ctx = ctx</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.algorithm.SITHAlgorithm.build_circuit" class="doc doc-heading">
+            <code class="highlight language-python">build_circuit()</code>
+
+<a href="#qace.algorithm.SITHAlgorithm.build_circuit" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Builds the CEA and Grover circuits for executing SITH via QAA.</p>
+<p>The CEA circuit is built in its full version, i.e., on the first m+n
+of self._ctx.qubit_count qubits.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>
+              –
+              <div class="doc-md-description">
+                <p>A tuple (cea_circuit_large, grover_circuit) containing the CEA</p>
+              </div>
+            </li>
+            <li>
+                  <code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>
+              –
+              <div class="doc-md-description">
+                <p>circuit padded to the full qubit count and the corresponding Grover</p>
+              </div>
+            </li>
+            <li>
+                  <code><span title="tuple">tuple</span>[<span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span>, <span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span>]</code>
+              –
+              <div class="doc-md-description">
+                <p>circuit.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/algorithm/_sith.py</code></summary>
+              <pre class="highlight"><code class="language-python">def build_circuit(self) -&gt; tuple[QuantumCircuit, QuantumCircuit]:
+    """Builds the CEA and Grover circuits for executing SITH via QAA.
+
+    The CEA circuit is built in its full version, i.e., on the first m+n
+    of self._ctx.qubit_count qubits.
+
+    Returns:
+        A tuple (cea_circuit_large, grover_circuit) containing the CEA
+        circuit padded to the full qubit count and the corresponding Grover
+        circuit.
+    """
+    ctx = self._ctx
+    vbf, m, n, qubit_count = (ctx.vbf, ctx.m, ctx.n, ctx.qubit_count)
+    cea_circuit = CorrelationExtraction(self._executor, vbf).build_circuit(
+        measure=False
+    )
+
+    cea_circuit_large = QuantumCircuit(qubit_count)
+    cea_circuit_large.compose(cea_circuit, range(m + n), inplace=True)
+
+    grover_circuit = self._build_grover_circuit(cea_circuit)
+
+    return (cea_circuit_large, grover_circuit)</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.algorithm.SITHAlgorithm.run" class="doc doc-heading">
+            <code class="highlight language-python">run()</code>
+
+<a href="#qace.algorithm.SITHAlgorithm.run" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Executes the SITH algorithm and extracts mask pairs from measurements.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="SITHAlgorithmResult(execution_result, metadata=dict(), mask_pairs=list(), iterations=0)
+
+  
+      dataclass
+   (qace.algorithm._sith.SITHAlgorithmResult)" href="sith/#qace.algorithm._sith.SITHAlgorithmResult">SITHAlgorithmResult</a></code>
+              –
+              <div class="doc-md-description">
+                <p>A SITHAlgorithmResult with the extracted (alpha, beta) pairs, the</p>
+              </div>
+            </li>
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="SITHAlgorithmResult(execution_result, metadata=dict(), mask_pairs=list(), iterations=0)
+
+  
+      dataclass
+   (qace.algorithm._sith.SITHAlgorithmResult)" href="sith/#qace.algorithm._sith.SITHAlgorithmResult">SITHAlgorithmResult</a></code>
+              –
+              <div class="doc-md-description">
+                <p>underlying execution result and metadata, and the number of QAA</p>
+              </div>
+            </li>
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="SITHAlgorithmResult(execution_result, metadata=dict(), mask_pairs=list(), iterations=0)
+
+  
+      dataclass
+   (qace.algorithm._sith.SITHAlgorithmResult)" href="sith/#qace.algorithm._sith.SITHAlgorithmResult">SITHAlgorithmResult</a></code>
+              –
+              <div class="doc-md-description">
+                <p>iterations performed.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/algorithm/_sith.py</code></summary>
+              <pre class="highlight"><code class="language-python">def run(self) -&gt; SITHAlgorithmResult:
+    """Executes the SITH algorithm and extracts mask pairs from measurements.
+
+    Returns:
+        A SITHAlgorithmResult with the extracted (alpha, beta) pairs, the
+        underlying execution result and metadata, and the number of QAA
+        iterations performed.
+    """
+    ctx = self._ctx
+
+    cea_circuit_large, grover_circuit = self.build_circuit()
+
+    success_prob = None
+    if ctx.precompute_success_prob:
+        success_prob = 0.0
+        for a, b in product(range(1 &lt;&lt; ctx.m), range(1 &lt;&lt; ctx.n)):
+            if self._verify_mask_pair_by_approximation((a, b, 0)):
+                success_prob += correlation(ctx.vbf, a, b) ** 2
+        success_prob /= 1 &lt;&lt; ctx.n
+
+    aux_bitmask = (1 &lt;&lt; (ctx.qubit_count - ctx.n - ctx.m)) - 1
+    output_bitmask = (1 &lt;&lt; (ctx.qubit_count - ctx.m)) - 1 - aux_bitmask
+    input_bitmask = (1 &lt;&lt; (ctx.qubit_count)) - 1 - output_bitmask
+    qaa_config = QAAConfig(
+        cea_circuit_large,
+        grover_circuit,
+        self._ctx.qubit_count,
+        lambda x: self._verify_mask_pair_by_approximation(
+            (
+                (x &amp; input_bitmask) &gt;&gt; (ctx.qubit_count - ctx.m),
+                (x &amp; output_bitmask) &gt;&gt; (ctx.qubit_count - ctx.n - ctx.m),
+                x &amp; aux_bitmask,
+            )
+        ),
+        success_prob,
+        None,
+        self._ctx.sampling_seed,
+    )
+
+    qaa = QuantumAmplitudeAmplification(self._executor, qaa_config)
+    qaa_result = qaa.run()
+
+    mask_pairs = self._verified_results_to_mask_pairs(qaa_result.verified_results)
+
+    return SITHAlgorithmResult(
+        execution_result=qaa_result.execution_result,
+        metadata=qaa_result.metadata,
+        mask_pairs=mask_pairs,
+        iterations=qaa_result.iterations,
+    )</code></pre>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="qace.algorithm.build_phase_flip_x_circuit" class="doc doc-heading">
+            <code class="highlight language-python">build_phase_flip_x_circuit(n, x)</code>
+
+<a href="#qace.algorithm.build_phase_flip_x_circuit" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Builds a phase flip circuit that flips the phase of a target state.</p>
+<p>Constructs a quantum circuit that applies a phase flip to the
+computational basis state specified by the integer x.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>n</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The number of control qubits (excluding the auxiliary qubit).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>x</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The integer representation of the target basis state to phase flip.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>
+              –
+              <div class="doc-md-description">
+                <p>A QuantumCircuit of n + 1 qubits that applies a phase flip to state x.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/algorithm/_preimage.py</code></summary>
+              <pre class="highlight"><code class="language-python">def build_phase_flip_x_circuit(n: int, x: int) -&gt; QuantumCircuit:
+    """Builds a phase flip circuit that flips the phase of a target state.
+
+    Constructs a quantum circuit that applies a phase flip to the
+    computational basis state specified by the integer x.
+
+    Args:
+        n: The number of control qubits (excluding the auxiliary qubit).
+        x: The integer representation of the target basis state to phase flip.
+
+    Returns:
+        A QuantumCircuit of n + 1 qubits that applies a phase flip to state x.
+    """
+    flip_label = int_to_fixed_bin_str(x, n)[
+        ::-1
+    ]  # we use the convention that q0 is MSB
+    phase_flip_x_circuit = QuantumCircuit(n + 1)
+    phase_flip_x_circuit.x(n)
+    phase_flip_x_circuit.h(n)
+    phase_flip_x_circuit.mcx(
+        phase_flip_x_circuit.qubits[0:n],
+        phase_flip_x_circuit.qubits[n],
+        ctrl_state=flip_label,
+    )
+    phase_flip_x_circuit.h(n)
+    phase_flip_x_circuit.x(n)
+    return phase_flip_x_circuit</code></pre>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../execution/iterative/" class="btn btn-neutral float-left" title="Iterative Executor"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="base/" class="btn btn-neutral float-right" title="Base">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Fraunhofer-AISEC/qace-sdk" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../execution/iterative/" style="color: #fcfcfc">« Previous</a></span>
+    
+    
+      <span><a href="base/" style="color: #fcfcfc">Next »</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body></html>

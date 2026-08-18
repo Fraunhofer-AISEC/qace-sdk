@@ -1,0 +1,757 @@
+<!DOCTYPE html><html class="writer-html5" lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>Preimage - QACE SDK</title>
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="../../css/theme_extra.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet">
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Preimage";
+        var mkdocs_page_input_path = "algorithm/preimage.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QACE SDK
+        </a><div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here">
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal">Execution Layer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/base/">Base</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/aer/">Aer Executor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/ibm_runtime/">IBM Runtime Executor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/iterative/">Iterative Executor</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current">Algorithm Layer</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../base/">Base</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cea/">Correlation Extraction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../sith/">Stochastic Identification via Thresholding</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Preimage</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#qace.algorithm._preimage">_preimage</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm._preimage.PreimageResult">PreimageResult</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm._preimage.PreimageConfig">PreimageConfig</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm._preimage.Preimage">Preimage</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm._preimage.build_phase_flip_x_circuit">build_phase_flip_x_circuit</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal">Vectorial Boolean Function (VBF) Layer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/vbf/">VBF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/random_vbf/">Random</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/lookup_table/">Lookup Table</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/rijndael_s_box/">Rijndael_s_box</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/xor_cipher/">XOR-Cipher</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/biased_rs/">Biased Function RS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/binary/">Binary</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/circuit_conventions/">Circuit Conventions</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QACE SDK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+          <li class="breadcrumb-item">Algorithm Layer</li>
+      <li class="breadcrumb-item active">Preimage</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Fraunhofer-AISEC/qace-sdk/edit/master/docs/algorithm/preimage.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <!--
+Copyright 2026 Fraunhofer AISEC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+--><h1 id="preimage-algorithm">Preimage Algorithm<a class="headerlink" href="#preimage-algorithm" title="Permanent link">¶</a></h1>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="qace.algorithm._preimage" class="doc doc-heading">
+            <code>qace.algorithm._preimage</code>
+
+
+<a href="#qace.algorithm._preimage" class="headerlink" title="Permanent link">¶</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Preimage search using quantum amplitude amplification.</p>
+<p>This module provides a quantum algorithm for finding preimages of a given
+image under a vectorial Boolean function. It leverages Grover's diffusion
+operator and quantum amplitude amplification to efficiently search for
+inputs that map to a specified output.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.algorithm._preimage.PreimageResult" class="doc doc-heading">
+              <code class="highlight language-python">PreimageResult(execution_result, metadata=dict(), verified_results=list(), iterations=0, preimages=list())</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+<a href="#qace.algorithm._preimage.PreimageResult" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="QAAResult(execution_result, metadata=dict(), verified_results=list(), iterations=0)
+
+  
+      dataclass
+   (qace.algorithm.QAAResult)" href="../#qace.algorithm.QAAResult">QAAResult</a></code></p>
+
+
+
+        <p>Result of a preimage search algorithm execution.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>preimages</code></b>
+                  (<code><span title="list">list</span>[<span title="int">int</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>A list of integer preimage values found during the search.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.algorithm._preimage.PreimageConfig" class="doc doc-heading">
+              <code class="highlight language-python">PreimageConfig(vbf, vbf_image, success_prob=None, seed=None, base=None)</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+<a href="#qace.algorithm._preimage.PreimageConfig" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>Configuration for the preimage search algorithm.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>vbf</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="VectorialBooleanFunction(f, m, n) (qace.vbf.VectorialBooleanFunction)" href="../../vbf/#qace.vbf.VectorialBooleanFunction">VectorialBooleanFunction</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The vectorial Boolean function to find preimages for.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>vbf_image</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The target image value whose preimage is sought.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>success_prob</code></b>
+                  (<code><span title="float">float</span> | None</code>)
+              –
+              <div class="doc-md-description">
+                <p>Optional desired success probability for the algorithm.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>seed</code></b>
+                  (<code><span title="int">int</span> | None</code>)
+              –
+              <div class="doc-md-description">
+                <p>Optional random seed for reproducibility.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>base</code></b>
+                  (<code><span title="float">float</span> | None</code>)
+              –
+              <div class="doc-md-description">
+                <p>Optional base parameter for amplitude amplification scheduling.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.algorithm._preimage.Preimage" class="doc doc-heading">
+              <code class="highlight language-python">Preimage(executor, preimage_config)</code>
+
+<a href="#qace.algorithm._preimage.Preimage" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="QuantumAlgorithm(executor) (qace.algorithm.QuantumAlgorithm)" href="../#qace.algorithm.QuantumAlgorithm">QuantumAlgorithm</a></code></p>
+
+
+
+        <p>Abstract base class for all preimage algorithms.</p>
+
+        <p>Initializes the Preimage algorithm instance.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>executor</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="CircuitExecutor() (qace.execution.CircuitExecutor)" href="../../execution/#qace.execution.CircuitExecutor">CircuitExecutor</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The circuit executor used to run quantum circuits.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>preimage_config</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="PreimageConfig(vbf, vbf_image, success_prob=None, seed=None, base=None)
+
+  
+      dataclass
+   (qace.algorithm._preimage.PreimageConfig)" href="#qace.algorithm._preimage.PreimageConfig">PreimageConfig</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>Configuration specifying the vectorial Boolean
+function and target image for the preimage search.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/algorithm/_preimage.py</code></summary>
+                    <pre class="highlight"><code class="language-python">def __init__(
+    self,
+    executor: CircuitExecutor,
+    preimage_config: PreimageConfig,
+):
+    """Initializes the Preimage algorithm instance.
+
+    Args:
+        executor: The circuit executor used to run quantum circuits.
+        preimage_config: Configuration specifying the vectorial Boolean
+            function and target image for the preimage search.
+    """
+    super().__init__(executor)
+    self._preimage_config = preimage_config</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.algorithm._preimage.Preimage.run" class="doc doc-heading">
+            <code class="highlight language-python">run()</code>
+
+<a href="#qace.algorithm._preimage.Preimage.run" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Executes the preimage search algorithm.</p>
+<p>Constructs the necessary quantum circuits and delegates execution to
+the quantum amplitude amplification subroutine.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="PreimageResult(execution_result, metadata=dict(), verified_results=list(), iterations=0, preimages=list())
+
+  
+      dataclass
+   (qace.algorithm._preimage.PreimageResult)" href="#qace.algorithm._preimage.PreimageResult">PreimageResult</a></code>
+              –
+              <div class="doc-md-description">
+                <p>A PreimageResult containing the measurement outcome and iteration count.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/algorithm/_preimage.py</code></summary>
+              <pre class="highlight"><code class="language-python">def run(self) -&gt; PreimageResult:
+    """Executes the preimage search algorithm.
+
+    Constructs the necessary quantum circuits and delegates execution to
+    the quantum amplitude amplification subroutine.
+
+    Returns:
+        A PreimageResult containing the measurement outcome and iteration count.
+    """
+    m = self._preimage_config.vbf.m
+    n = self._preimage_config.vbf.n
+    unitary = self._preimage_config.vbf.to_circuit()
+    qubit_count = unitary.num_qubits + 1
+    unitary_extended = QuantumCircuit(qubit_count)
+    unitary_extended.h(range(m))
+    unitary_extended.compose(
+        unitary, qubits=range(unitary.num_qubits), inplace=True
+    )
+    grover_circuit = self._build_grover_circuit(unitary_extended)
+
+    def verify(measured_value):
+        # we use n + 1 here to shift the measured value, because the output uses an auxiliary qubit
+        x = (measured_value &gt;&gt; (n + 1)) &amp; ((1 &lt;&lt; m) - 1)
+        # shift away the auxiliary, then get the output bits
+        y = (measured_value &gt;&gt; 1) &amp; ((1 &lt;&lt; n) - 1)
+
+        return (
+            self._preimage_config.vbf.eval(x) == y
+            and self._preimage_config.vbf_image == y
+        )
+
+    qaa_config = QAAConfig(
+        unitary=unitary_extended,
+        grover_circuit=grover_circuit,
+        qubit_count=qubit_count,
+        verify=verify,
+        success_prob=self._preimage_config.success_prob,
+        base=self._preimage_config.base,
+        seed=self._preimage_config.seed,
+    )
+
+    qaa = QuantumAmplitudeAmplification(
+        executor=self._executor,
+        qaa_config=qaa_config,
+    )
+    result = qaa.run()
+
+    return PreimageResult(
+        execution_result=result.execution_result,
+        metadata=result.metadata,
+        verified_results=result.verified_results,
+        iterations=result.iterations,
+        preimages=[
+            res &gt;&gt; (self._preimage_config.vbf.n + 1)
+            for res in result.verified_results
+        ],
+    )</code></pre>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="qace.algorithm._preimage.build_phase_flip_x_circuit" class="doc doc-heading">
+            <code class="highlight language-python">build_phase_flip_x_circuit(n, x)</code>
+
+<a href="#qace.algorithm._preimage.build_phase_flip_x_circuit" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Builds a phase flip circuit that flips the phase of a target state.</p>
+<p>Constructs a quantum circuit that applies a phase flip to the
+computational basis state specified by the integer x.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>n</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The number of control qubits (excluding the auxiliary qubit).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>x</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The integer representation of the target basis state to phase flip.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>
+              –
+              <div class="doc-md-description">
+                <p>A QuantumCircuit of n + 1 qubits that applies a phase flip to state x.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/algorithm/_preimage.py</code></summary>
+              <pre class="highlight"><code class="language-python">def build_phase_flip_x_circuit(n: int, x: int) -&gt; QuantumCircuit:
+    """Builds a phase flip circuit that flips the phase of a target state.
+
+    Constructs a quantum circuit that applies a phase flip to the
+    computational basis state specified by the integer x.
+
+    Args:
+        n: The number of control qubits (excluding the auxiliary qubit).
+        x: The integer representation of the target basis state to phase flip.
+
+    Returns:
+        A QuantumCircuit of n + 1 qubits that applies a phase flip to state x.
+    """
+    flip_label = int_to_fixed_bin_str(x, n)[
+        ::-1
+    ]  # we use the convention that q0 is MSB
+    phase_flip_x_circuit = QuantumCircuit(n + 1)
+    phase_flip_x_circuit.x(n)
+    phase_flip_x_circuit.h(n)
+    phase_flip_x_circuit.mcx(
+        phase_flip_x_circuit.qubits[0:n],
+        phase_flip_x_circuit.qubits[n],
+        ctrl_state=flip_label,
+    )
+    phase_flip_x_circuit.h(n)
+    phase_flip_x_circuit.x(n)
+    return phase_flip_x_circuit</code></pre>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../sith/" class="btn btn-neutral float-left" title="Stochastic Identification via Thresholding"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../vbf/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Fraunhofer-AISEC/qace-sdk" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../sith/" style="color: #fcfcfc">« Previous</a></span>
+    
+    
+      <span><a href="../../vbf/" style="color: #fcfcfc">Next »</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body></html>

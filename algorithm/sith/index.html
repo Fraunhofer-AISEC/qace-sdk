@@ -1,0 +1,1011 @@
+<!DOCTYPE html><html class="writer-html5" lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>Stochastic Identification via Thresholding - QACE SDK</title>
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="../../css/theme_extra.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet">
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Stochastic Identification via Thresholding";
+        var mkdocs_page_input_path = "algorithm/sith.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QACE SDK
+        </a><div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here">
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal">Execution Layer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/base/">Base</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/aer/">Aer Executor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/ibm_runtime/">IBM Runtime Executor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/iterative/">Iterative Executor</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current">Algorithm Layer</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../base/">Base</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cea/">Correlation Extraction</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Stochastic Identification via Thresholding</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#qace.algorithm._sith">_sith</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm._sith.SITHContext">SITHContext</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm._sith.SITHAlgorithmResult">SITHAlgorithmResult</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.algorithm._sith.SITHAlgorithm">SITHAlgorithm</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../preimage/">Preimage</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal">Vectorial Boolean Function (VBF) Layer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/vbf/">VBF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/random_vbf/">Random</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/lookup_table/">Lookup Table</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/rijndael_s_box/">Rijndael_s_box</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/xor_cipher/">XOR-Cipher</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/biased_rs/">Biased Function RS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/binary/">Binary</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/circuit_conventions/">Circuit Conventions</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QACE SDK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+          <li class="breadcrumb-item">Algorithm Layer</li>
+      <li class="breadcrumb-item active">Stochastic Identification via Thresholding</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Fraunhofer-AISEC/qace-sdk/edit/master/docs/algorithm/sith.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <!--
+Copyright 2026 Fraunhofer AISEC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+--><h1 id="stochastic-identification-via-thresholding">Stochastic Identification via Thresholding<a class="headerlink" href="#stochastic-identification-via-thresholding" title="Permanent link">¶</a></h1>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="qace.algorithm._sith" class="doc doc-heading">
+            <code>qace.algorithm._sith</code>
+
+
+<a href="#qace.algorithm._sith" class="headerlink" title="Permanent link">¶</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Stochastic Identification via Thresholding (SITH) algorithm implementation.</p>
+<p>This module provides the SITHAlgorithm quantum algorithm, which extracts mask
+pairs (alpha, beta) of a Vectorial Boolean Function (VBF) with minimal bias by
+combining the Correlation Extraction Algorithm (CEA) with Quantum Amplitude
+Amplification (QAA). It also defines the SITHContext dataclass, which bundles
+all problem and circuit parameters needed to execute SITH, and the
+SITHAlgorithmResult dataclass, which contains the extracted mask pairs.</p>
+<p>Typical usage example:</p>
+<p>ctx = SITHContext(vbf, tau=0.1, l=0.05, d=0.01)
+  algorithm = SITHAlgorithm(executor, ctx)
+  result = algorithm.run()</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.algorithm._sith.SITHContext" class="doc doc-heading">
+              <code class="highlight language-python">SITHContext(vbf, tau, l, d, sampling_seed=None, precompute_success_prob=False)</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+<a href="#qace.algorithm._sith.SITHContext" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>Container for the information needed to execute SITH.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>vbf</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="VectorialBooleanFunction(f, m, n) (qace.vbf.VectorialBooleanFunction)" href="../../vbf/#qace.vbf.VectorialBooleanFunction">VectorialBooleanFunction</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The Vectorial Boolean Function to analyze.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>m</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Number of input bits of the VBF.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>n</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Number of output bits of the VBF.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>tau</code></b>
+                  (<code><span title="float">float</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Desired bias lower bound.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>l</code></b>
+                  (<code><span title="float">float</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Error bound for the Walsh approximation.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>d</code></b>
+                  (<code><span title="float">float</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Confidence threshold for success of the probabilistic algorithm.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>sample_inputs</code></b>
+                  (<code><span title="list">list</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Sampled input values used for the Walsh approximation.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>sample_outputs</code></b>
+                  (<code><span title="list">list</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>VBF evaluations of the sampled inputs.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>qubit_count</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Total number of qubits used by the SITH circuits.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>approx_reg_qubit_count</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Number of qubits in the Walsh approximation
+register.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>aux_qubit_index</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Index of the auxiliary qubit used for case distinctions.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>approx_reg_range</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Qubit index range covering the Walsh approximation
+register including the two's complement qubit.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>sampling_seed</code></b>
+                  (<code><span title="float">float</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Seed for the sampling and the classical choices made in
+QAA.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>precompute_success_prob</code></b>
+                  (<code><span title="bool">bool</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Whether the procedure should precompute the
+success probability of the iteration count of QAA.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <p>Builds an appropriate context for executing SITH on a VBF.</p>
+<p>This excludes building the CEA and Grover circuits.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>vbf</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="VectorialBooleanFunction(f, m, n) (qace.vbf.VectorialBooleanFunction)" href="../../vbf/#qace.vbf.VectorialBooleanFunction">VectorialBooleanFunction</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The VBF.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>tau</code></b>
+                  (<code><span title="float">float</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Desired bias lower bound.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>l</code></b>
+                  (<code><span title="float">float</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Error bound for the Walsh approximation.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>d</code></b>
+                  (<code><span title="float">float</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Confidence threshold for success of the probabilistic algorithm,
+i.e., SITH succeeds with probability &gt;= 1-d.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>sampling_seed</code></b>
+                  (<code><span title="int">int</span> | None</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Seed for the sampling and the classical choices made
+in QAA.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>precompute_success_prob</code></b>
+                  (<code><span title="bool">bool</span></code>, default:
+                      <code>False</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Whether the procedure should precompute
+the success probability of the iteration count of QAA. Infeasible
+for functions with many bits.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code>None</code>
+              –
+              <div class="doc-md-description">
+                <p>SITH context for further use.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/algorithm/_sith.py</code></summary>
+                    <pre class="highlight"><code class="language-python">def __init__(
+    self,
+    vbf: VectorialBooleanFunction,
+    tau: float,
+    l: float,
+    d: float,
+    sampling_seed: int | None = None,
+    precompute_success_prob: bool = False,
+) -&gt; None:
+    """Builds an appropriate context for executing SITH on a VBF.
+
+    This excludes building the CEA and Grover circuits.
+
+    Args:
+        vbf: The VBF.
+        tau: Desired bias lower bound.
+        l: Error bound for the Walsh approximation.
+        d: Confidence threshold for success of the probabilistic algorithm,
+            i.e., SITH succeeds with probability &gt;= 1-d.
+        sampling_seed: Seed for the sampling and the classical choices made
+            in QAA.
+        precompute_success_prob: Whether the procedure should precompute
+            the success probability of the iteration count of QAA. Infeasible
+            for functions with many bits.
+
+    Returns:
+        SITH context for further use.
+    """
+    m, n = (vbf.m, vbf.n)
+
+    random.seed(sampling_seed)
+
+    # Compute the required sample count `S`, which can be higher than `2^m` for low `m`, and sample inputs.
+    s = ceil((log(1 / d) + log(2) + log(1 &lt;&lt; (m + n))) / (2 * l**2))
+    ls = log2(s)
+    approx_reg_qubit_count = ceil(ls)
+    # Check if there are a power of two many samples and add additional qubit to accomodate for e.g. (0, 0) having full approximated correlation.
+    if ls.is_integer():
+        approx_reg_qubit_count += 1
+    sample_inputs = None
+    if s &lt; 1 &lt;&lt; m:
+        sample_inputs = sample(range(1 &lt;&lt; m), s)
+    else:
+        s = 1 &lt;&lt; m
+        approx_reg_qubit_count = m + 1
+        sample_inputs = range(s)
+    # Precompute function values
+    sample_outputs = [vbf.eval(x) for x in sample_inputs]
+
+    # Layout: | Input x | Output f(x) | Auxiliary Qubit for computing the approximate biases and for making the case distinction in the registers | Auxiliary Walsh Approx Register with Qubit for Twos Complement |
+    qubit_count = m + n + 1 + (approx_reg_qubit_count + 1)
+
+    aux_qubit_index = m + n
+    approx_reg_range = range(
+        aux_qubit_index + 1, aux_qubit_index + 1 + (approx_reg_qubit_count + 1)
+    )
+
+    self.vbf = vbf
+    self.m = m
+    self.n = n
+    self.tau = tau
+    self.l = l
+    self.d = d
+    self.sample_inputs = sample_inputs
+    self.sample_outputs = sample_outputs
+    self.qubit_count = qubit_count
+    self.approx_reg_qubit_count = approx_reg_qubit_count
+    self.aux_qubit_index = aux_qubit_index
+    self.approx_reg_range = approx_reg_range
+    self.sampling_seed = sampling_seed
+    self.precompute_success_prob = precompute_success_prob</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.algorithm._sith.SITHAlgorithmResult" class="doc doc-heading">
+              <code class="highlight language-python">SITHAlgorithmResult(execution_result, metadata=dict(), mask_pairs=list(), iterations=0)</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+<a href="#qace.algorithm._sith.SITHAlgorithmResult" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="AlgorithmResult(execution_result, metadata=dict())
+
+  
+      dataclass
+   (qace.algorithm.AlgorithmResult)" href="../#qace.algorithm.AlgorithmResult">AlgorithmResult</a></code></p>
+
+
+
+        <p>Result of a SITH execution containing extracted mask pairs.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>mask_pairs</code></b>
+                  (<code><span title="list">list</span>[<span title="tuple">tuple</span>[<span title="int">int</span>, <span title="int">int</span>]]</code>)
+              –
+              <div class="doc-md-description">
+                <p>List of extracted (alpha, beta) mask pairs.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>iterations</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Number of QAA iterations that were executed.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.algorithm._sith.SITHAlgorithm" class="doc doc-heading">
+              <code class="highlight language-python">SITHAlgorithm(executor, ctx)</code>
+
+<a href="#qace.algorithm._sith.SITHAlgorithm" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="QuantumAlgorithm(executor) (qace.algorithm.QuantumAlgorithm)" href="../#qace.algorithm.QuantumAlgorithm">QuantumAlgorithm</a></code></p>
+
+
+
+        <p>Stochastic Identification via Thresholding (SITH).</p>
+<p>Based on CEA and AA, this algorithm finds mask pairs of a VBF with minimal bias.</p>
+
+        <p>Initializes the SITH with an executor and a context.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>executor</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="CircuitExecutor() (qace.execution.CircuitExecutor)" href="../../execution/#qace.execution.CircuitExecutor">CircuitExecutor</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The CircuitExecutor instance used to run the circuit.
+NOTE: Setting shots != 1 leads to a false simulation, since the
+QAA-based algorithm can only sample once per iteration on a real
+quantum computer.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>ctx</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="SITHContext(vbf, tau, l, d, sampling_seed=None, precompute_success_prob=False)
+
+  
+      dataclass
+   (qace.algorithm._sith.SITHContext)" href="#qace.algorithm._sith.SITHContext">SITHContext</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The SITHContext to use, including the VectorialBooleanFunction
+to analyze.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/algorithm/_sith.py</code></summary>
+                    <pre class="highlight"><code class="language-python">def __init__(self, executor: CircuitExecutor, ctx: SITHContext):
+    """Initializes the SITH with an executor and a context.
+
+    Args:
+        executor: The CircuitExecutor instance used to run the circuit.
+            NOTE: Setting shots != 1 leads to a false simulation, since the
+            QAA-based algorithm can only sample once per iteration on a real
+            quantum computer.
+        ctx: The SITHContext to use, including the VectorialBooleanFunction
+            to analyze.
+    """
+    super().__init__(executor)
+    self._ctx = ctx</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.algorithm._sith.SITHAlgorithm.build_circuit" class="doc doc-heading">
+            <code class="highlight language-python">build_circuit()</code>
+
+<a href="#qace.algorithm._sith.SITHAlgorithm.build_circuit" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Builds the CEA and Grover circuits for executing SITH via QAA.</p>
+<p>The CEA circuit is built in its full version, i.e., on the first m+n
+of self._ctx.qubit_count qubits.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>
+              –
+              <div class="doc-md-description">
+                <p>A tuple (cea_circuit_large, grover_circuit) containing the CEA</p>
+              </div>
+            </li>
+            <li>
+                  <code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>
+              –
+              <div class="doc-md-description">
+                <p>circuit padded to the full qubit count and the corresponding Grover</p>
+              </div>
+            </li>
+            <li>
+                  <code><span title="tuple">tuple</span>[<span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span>, <span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span>]</code>
+              –
+              <div class="doc-md-description">
+                <p>circuit.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/algorithm/_sith.py</code></summary>
+              <pre class="highlight"><code class="language-python">def build_circuit(self) -&gt; tuple[QuantumCircuit, QuantumCircuit]:
+    """Builds the CEA and Grover circuits for executing SITH via QAA.
+
+    The CEA circuit is built in its full version, i.e., on the first m+n
+    of self._ctx.qubit_count qubits.
+
+    Returns:
+        A tuple (cea_circuit_large, grover_circuit) containing the CEA
+        circuit padded to the full qubit count and the corresponding Grover
+        circuit.
+    """
+    ctx = self._ctx
+    vbf, m, n, qubit_count = (ctx.vbf, ctx.m, ctx.n, ctx.qubit_count)
+    cea_circuit = CorrelationExtraction(self._executor, vbf).build_circuit(
+        measure=False
+    )
+
+    cea_circuit_large = QuantumCircuit(qubit_count)
+    cea_circuit_large.compose(cea_circuit, range(m + n), inplace=True)
+
+    grover_circuit = self._build_grover_circuit(cea_circuit)
+
+    return (cea_circuit_large, grover_circuit)</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.algorithm._sith.SITHAlgorithm.run" class="doc doc-heading">
+            <code class="highlight language-python">run()</code>
+
+<a href="#qace.algorithm._sith.SITHAlgorithm.run" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Executes the SITH algorithm and extracts mask pairs from measurements.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="SITHAlgorithmResult(execution_result, metadata=dict(), mask_pairs=list(), iterations=0)
+
+  
+      dataclass
+   (qace.algorithm._sith.SITHAlgorithmResult)" href="#qace.algorithm._sith.SITHAlgorithmResult">SITHAlgorithmResult</a></code>
+              –
+              <div class="doc-md-description">
+                <p>A SITHAlgorithmResult with the extracted (alpha, beta) pairs, the</p>
+              </div>
+            </li>
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="SITHAlgorithmResult(execution_result, metadata=dict(), mask_pairs=list(), iterations=0)
+
+  
+      dataclass
+   (qace.algorithm._sith.SITHAlgorithmResult)" href="#qace.algorithm._sith.SITHAlgorithmResult">SITHAlgorithmResult</a></code>
+              –
+              <div class="doc-md-description">
+                <p>underlying execution result and metadata, and the number of QAA</p>
+              </div>
+            </li>
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="SITHAlgorithmResult(execution_result, metadata=dict(), mask_pairs=list(), iterations=0)
+
+  
+      dataclass
+   (qace.algorithm._sith.SITHAlgorithmResult)" href="#qace.algorithm._sith.SITHAlgorithmResult">SITHAlgorithmResult</a></code>
+              –
+              <div class="doc-md-description">
+                <p>iterations performed.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/algorithm/_sith.py</code></summary>
+              <pre class="highlight"><code class="language-python">def run(self) -&gt; SITHAlgorithmResult:
+    """Executes the SITH algorithm and extracts mask pairs from measurements.
+
+    Returns:
+        A SITHAlgorithmResult with the extracted (alpha, beta) pairs, the
+        underlying execution result and metadata, and the number of QAA
+        iterations performed.
+    """
+    ctx = self._ctx
+
+    cea_circuit_large, grover_circuit = self.build_circuit()
+
+    success_prob = None
+    if ctx.precompute_success_prob:
+        success_prob = 0.0
+        for a, b in product(range(1 &lt;&lt; ctx.m), range(1 &lt;&lt; ctx.n)):
+            if self._verify_mask_pair_by_approximation((a, b, 0)):
+                success_prob += correlation(ctx.vbf, a, b) ** 2
+        success_prob /= 1 &lt;&lt; ctx.n
+
+    aux_bitmask = (1 &lt;&lt; (ctx.qubit_count - ctx.n - ctx.m)) - 1
+    output_bitmask = (1 &lt;&lt; (ctx.qubit_count - ctx.m)) - 1 - aux_bitmask
+    input_bitmask = (1 &lt;&lt; (ctx.qubit_count)) - 1 - output_bitmask
+    qaa_config = QAAConfig(
+        cea_circuit_large,
+        grover_circuit,
+        self._ctx.qubit_count,
+        lambda x: self._verify_mask_pair_by_approximation(
+            (
+                (x &amp; input_bitmask) &gt;&gt; (ctx.qubit_count - ctx.m),
+                (x &amp; output_bitmask) &gt;&gt; (ctx.qubit_count - ctx.n - ctx.m),
+                x &amp; aux_bitmask,
+            )
+        ),
+        success_prob,
+        None,
+        self._ctx.sampling_seed,
+    )
+
+    qaa = QuantumAmplitudeAmplification(self._executor, qaa_config)
+    qaa_result = qaa.run()
+
+    mask_pairs = self._verified_results_to_mask_pairs(qaa_result.verified_results)
+
+    return SITHAlgorithmResult(
+        execution_result=qaa_result.execution_result,
+        metadata=qaa_result.metadata,
+        mask_pairs=mask_pairs,
+        iterations=qaa_result.iterations,
+    )</code></pre>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../cea/" class="btn btn-neutral float-left" title="Correlation Extraction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../preimage/" class="btn btn-neutral float-right" title="Preimage">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Fraunhofer-AISEC/qace-sdk" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../cea/" style="color: #fcfcfc">« Previous</a></span>
+    
+    
+      <span><a href="../preimage/" style="color: #fcfcfc">Next »</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body></html>

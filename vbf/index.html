@@ -1,0 +1,3001 @@
+<!DOCTYPE html><html class="writer-html5" lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" href="../img/favicon.ico">
+    <title>Overview - QACE SDK</title>
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/theme_extra.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet">
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Overview";
+        var mkdocs_page_input_path = "vbf/index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> QACE SDK
+        </a><div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here">
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal">Execution Layer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../execution/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../execution/base/">Base</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../execution/aer/">Aer Executor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../execution/ibm_runtime/">IBM Runtime Executor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../execution/iterative/">Iterative Executor</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal">Algorithm Layer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../algorithm/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../algorithm/base/">Base</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../algorithm/cea/">Correlation Extraction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../algorithm/sith/">Stochastic Identification via Thresholding</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../algorithm/preimage/">Preimage</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current">Vectorial Boolean Function (VBF) Layer</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Overview</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#public-api">Public API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#qace.vbf">vbf</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.rijndael_s_box">rijndael_s_box</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.__all__">__all__</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.VectorialBooleanFunction">VectorialBooleanFunction</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.VectorialBooleanFunctionFull">VectorialBooleanFunctionFull</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.LookupTableVBF">LookupTableVBF</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.RandomVBF">RandomVBF</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.XORCipherVBF">XORCipherVBF</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.BiasedFunctionRS">BiasedFunctionRS</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.int_to_fixed_bin_str">int_to_fixed_bin_str</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.int_to_twos_complement_repr">int_to_twos_complement_repr</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.get_parity">get_parity</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.mcx_msb0">mcx_msb0</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.measure_msb0">measure_msb0</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.measure_all_msb0">measure_all_msb0</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.mask_equality_count">mask_equality_count</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.mask_equality_probability">mask_equality_probability</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.walsh_transform">walsh_transform</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.correlation">correlation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.bias">bias</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.approximate_mec">approximate_mec</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf.approximate_bias">approximate_bias</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="vbf/">VBF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="random_vbf/">Random</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="lookup_table/">Lookup Table</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="rijndael_s_box/">Rijndael_s_box</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="xor_cipher/">XOR-Cipher</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="biased_rs/">Biased Function RS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="binary/">Binary</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="circuit_conventions/">Circuit Conventions</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">QACE SDK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+          <li class="breadcrumb-item">Vectorial Boolean Function (VBF) Layer</li>
+      <li class="breadcrumb-item active">Overview</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Fraunhofer-AISEC/qace-sdk/edit/master/docs/vbf/index.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <!--
+Copyright 2026 Fraunhofer AISEC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+--><h1 id="vectorial-boolean-function-layer">Vectorial Boolean Function Layer<a class="headerlink" href="#vectorial-boolean-function-layer" title="Permanent link">¶</a></h1>
+<h2 id="public-api">Public API<a class="headerlink" href="#public-api" title="Permanent link">¶</a></h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="qace.vbf" class="doc doc-heading">
+            <code>qace.vbf</code>
+
+
+<a href="#qace.vbf" class="headerlink" title="Permanent link">¶</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Public API of the algorithm package.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="qace.vbf.rijndael_s_box" class="doc doc-heading">
+            <code class="highlight language-python">rijndael_s_box = VectorialBooleanFunctionFull(rijndael_s_box_function, 8, 8)</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#qace.vbf.rijndael_s_box" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="qace.vbf.__all__" class="doc doc-heading">
+            <code class="highlight language-python">__all__ = ['VectorialBooleanFunction', 'VectorialBooleanFunctionFull', 'LookupTableVBF', 'RandomVBF', 'rijndael_s_box', 'XORCipherVBF', 'BiasedFunctionRS', 'int_to_fixed_bin_str', 'int_to_twos_complement_repr', 'mcx_msb0', 'measure_msb0', 'measure_all_msb0', 'mask_equality_count', 'mask_equality_probability', 'walsh_transform', 'correlation', 'bias', 'approximate_mec', 'approximate_bias', 'get_parity']</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#qace.vbf.__all__" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.vbf.VectorialBooleanFunction" class="doc doc-heading">
+              <code class="highlight language-python">VectorialBooleanFunction(f, m, n)</code>
+
+<a href="#qace.vbf.VectorialBooleanFunction" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="abc.ABC">ABC</span></code></p>
+
+
+
+        <p>Class for modelling vectorial Boolean functions.</p>
+
+        <p>Initializes a vectorial Boolean function.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>f</code></b>
+                  (<code><span title="collections.abc.Callable">Callable</span>[[<span title="int">int</span>], <span title="int">int</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>A vectorial Boolean function from <code>m</code> to <code>n</code> bits, which itself is a function from <code>int</code> to <code>int</code>.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>m</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Domain bit count.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>n</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Image bit count.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code>None</code>
+              –
+              <div class="doc-md-description">
+                <p>The initialized function.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/vbf/_vbf.py</code></summary>
+                    <pre class="highlight"><code class="language-python">@abstractmethod
+def __init__(self, f: Callable[[int], int], m: int, n: int) -&gt; None:
+    """Initializes a vectorial Boolean function.
+
+    Args:
+        f: A vectorial Boolean function from `m` to `n` bits, which itself is a function from `int` to `int`.
+        m: Domain bit count.
+        n: Image bit count.
+
+    Returns:
+        The initialized function.
+    """
+    self.m = m
+    self.n = n
+    self.M = 1 &lt;&lt; self.m
+    self.N = 1 &lt;&lt; self.n
+    self._f = f</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.vbf.VectorialBooleanFunction.eval" class="doc doc-heading">
+            <code class="highlight language-python">eval(x)</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
+
+<a href="#qace.vbf.VectorialBooleanFunction.eval" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Evaluates the vectorial Boolean function at a point <code>x</code>.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>x</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Input argument <code>x</code>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="int">int</span></code>
+              –
+              <div class="doc-md-description">
+                <p>Value <code>f(x)</code>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_vbf.py</code></summary>
+              <pre class="highlight"><code class="language-python">@abstractmethod
+def eval(self, x: int) -&gt; int:
+    """Evaluates the vectorial Boolean function at a point `x`.
+
+    Args:
+        x: Input argument `x`.
+
+    Returns:
+        Value `f(x)`.
+    """
+    pass</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.vbf.VectorialBooleanFunction.to_circuit" class="doc doc-heading">
+            <code class="highlight language-python">to_circuit(method='qiskit_esop_generator')</code>
+
+<a href="#qace.vbf.VectorialBooleanFunction.to_circuit" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Constructs a quantum circuit representing the Boolean function using the specified method. Override for custom circuit implementations.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>method</code></b>
+                  (<code><span title="str">str</span></code>, default:
+                      <code>'qiskit_esop_generator'</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>"minterms" to use the minterm-based approach (truth table) or
+    "qiskit_esop_generator" to use the qiskit esop_generator class, that uses Shannon's expansion
+    based term minimization.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>
+              –
+              <div class="doc-md-description">
+                <p>The Qiskit quantum circuit encoding the Boolean function.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_vbf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def to_circuit(self, method: str = "qiskit_esop_generator") -&gt; QuantumCircuit:
+    """Constructs a quantum circuit representing the Boolean function using the specified method. Override for custom circuit implementations.
+
+    Args:
+        method: "minterms" to use the minterm-based approach (truth table) or
+                "qiskit_esop_generator" to use the qiskit esop_generator class, that uses Shannon's expansion
+                based term minimization.
+
+    Returns:
+        The Qiskit quantum circuit encoding the Boolean function.
+    """
+    if method == "minterms":
+        return self._to_circuit_minterms()
+    elif method == "qiskit_esop_generator":
+        return self._to_ciruit_qiskit_esop_generator()
+    else:
+        ValueError(
+            f'method must be "minterms" or "qiskit_esop_generator" found: {method}'
+        )</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.vbf.VectorialBooleanFunction.to_sparse_unitary" class="doc doc-heading">
+            <code class="highlight language-python">to_sparse_unitary()</code>
+
+<a href="#qace.vbf.VectorialBooleanFunction.to_sparse_unitary" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Creates a <code>scikit.sparse.coo_array</code> corresponding to an oracle unitary for the function.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="scipy.sparse.csc_array">csc_array</span></code>
+              –
+              <div class="doc-md-description">
+                <p>Sparsely encoded unitary oracle corresponding to the function.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_vbf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def to_sparse_unitary(self) -&gt; csc_array:
+    """Creates a `scikit.sparse.coo_array` corresponding to an oracle unitary for the function.
+
+    Returns:
+        Sparsely encoded unitary oracle corresponding to the function.
+    """
+
+    # Custom `to_gate` function, as `tweedledum` does not build with `pip` for some reason, as of 05.07.2024, 00:14 with version v1.1.1.,
+    # so Qiskits `classical_function` API cannot be used.
+    # See also https://docs.quantum.ibm.com/api/qiskit/classicalfunction and https://github.com/boschmitt/tweedledum/issues/186.
+    def col_generator(f: VectorialBooleanFunction):
+        for x in range(1 &lt;&lt; f.m):
+            for y in range(1 &lt;&lt; f.n):
+                # Determines index for setting one according to the oracle description |x&gt;|y&gt; |-&gt; |x&gt;|y + f(x)&gt;.
+                yield (x &lt;&lt; f.n) | (y ^ f.eval(x))
+
+    size = 1 &lt;&lt; (self.m + self.n)
+    unitary = coo_array(
+        ([1] * size, (list(col_generator(self)), range(size))),
+        shape=(size, size),
+        dtype=complex,
+    ).tocsc()
+    return unitary</code></pre>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.vbf.VectorialBooleanFunctionFull" class="doc doc-heading">
+              <code class="highlight language-python">VectorialBooleanFunctionFull(f, m, n)</code>
+
+<a href="#qace.vbf.VectorialBooleanFunctionFull" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="VectorialBooleanFunction(f, m, n) (qace.vbf._vbf.VectorialBooleanFunction)" href="vbf/#qace.vbf._vbf.VectorialBooleanFunction">VectorialBooleanFunction</a></code></p>
+
+
+
+        <p>A fully precomputed vectorial Boolean function.</p>
+<p>Stores all output values of the function in a bitarray for efficient
+evaluation without recomputation.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>f</code></b>
+              –
+              <div class="doc-md-description">
+                <p>A bitarray storing the precomputed output values of the function.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>m</code></b>
+              –
+              <div class="doc-md-description">
+                <p>The number of input bits.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>n</code></b>
+              –
+              <div class="doc-md-description">
+                <p>The number of output bits.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>M</code></b>
+              –
+              <div class="doc-md-description">
+                <p>The size of the input domain (2^m).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>N</code></b>
+              –
+              <div class="doc-md-description">
+                <p>The size of the output domain (2^n).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <p>Initializes a vectorial Boolean function. Precomputes and stores all values of <code>f</code> using the given function object.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>f</code></b>
+                  (<code><span title="collections.abc.Callable">Callable</span>[[<span title="int">int</span>], <span title="int">int</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>A vectorial Boolean function from <code>m</code> to <code>n</code> bits, which itself is a function from <code>int</code> to <code>int</code>.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>m</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Domain bit count.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>n</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Image bit count.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code>None</code>
+              –
+              <div class="doc-md-description">
+                <p>The initialized function.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/vbf/_vbf.py</code></summary>
+                    <pre class="highlight"><code class="language-python">def __init__(self, f: Callable[[int], int], m: int, n: int) -&gt; None:
+    """Initializes a vectorial Boolean function. Precomputes and stores all values of `f` using the given function object.
+
+    Args:
+        f: A vectorial Boolean function from `m` to `n` bits, which itself is a function from `int` to `int`.
+        m: Domain bit count.
+        n: Image bit count.
+
+    Returns:
+        The initialized function.
+    """
+    assert m &lt;= MAX_BIT_COUNT and n &lt;= MAX_BIT_COUNT
+    super().__init__(f, m, n)
+    self.f = bitarray((1 &lt;&lt; m) * n)
+    for x in range(1 &lt;&lt; m):
+        self.f[x * n : (x + 1) * n] = bitarray(format(f(x), f"#0{n+2}b")[2:])
+    self.__call__ = lambda x: int(self.f[(x * n) : ((x + 1) * n)].to01(), 2)</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.vbf.VectorialBooleanFunctionFull.eval" class="doc doc-heading">
+            <code class="highlight language-python">eval(x)</code>
+
+<a href="#qace.vbf.VectorialBooleanFunctionFull.eval" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Evaluates the vectorial Boolean function at a point <code>x</code>.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>x</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Input argument <code>x</code>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="int">int</span></code>
+              –
+              <div class="doc-md-description">
+                <p>Value <code>f(x)</code>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_vbf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def eval(self, x: int) -&gt; int:
+    """Evaluates the vectorial Boolean function at a point `x`.
+
+    Args:
+        x: Input argument `x`.
+
+    Returns:
+        Value `f(x)`.
+    """
+    return self.__call__(x)</code></pre>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.vbf.LookupTableVBF" class="doc doc-heading">
+              <code class="highlight language-python">LookupTableVBF(m, n, lookup)</code>
+
+<a href="#qace.vbf.LookupTableVBF" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="VectorialBooleanFunctionFull(f, m, n) (qace.vbf.VectorialBooleanFunctionFull)" href="#qace.vbf.VectorialBooleanFunctionFull">VectorialBooleanFunctionFull</a></code></p>
+
+
+
+        <p>A vectorial Boolean function defined by a lookup table.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>m</code></b>
+              –
+              <div class="doc-md-description">
+                <p>The number of input bits.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>n</code></b>
+              –
+              <div class="doc-md-description">
+                <p>The number of output bits.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <p>Initializes the instance from a lookup table.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>m</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The number of input bits.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>n</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The number of output bits.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>lookup</code></b>
+                  (<code><span title="dict">dict</span>[<span title="int">int</span>, <span title="int">int</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>A sequence mapping each input value to its corresponding
+output value.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/vbf/_lookup_table.py</code></summary>
+                    <pre class="highlight"><code class="language-python">def __init__(self, m: int, n: int, lookup: dict[int, int]) -&gt; None:
+    """Initializes the instance from a lookup table.
+
+    Args:
+        m: The number of input bits.
+        n: The number of output bits.
+        lookup: A sequence mapping each input value to its corresponding
+            output value.
+    """
+    VectorialBooleanFunctionFull.__init__(self, lambda x: lookup[x], m, n)</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.vbf.RandomVBF" class="doc doc-heading">
+              <code class="highlight language-python">RandomVBF(m, n, rng_seed=None)</code>
+
+<a href="#qace.vbf.RandomVBF" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="VectorialBooleanFunctionFull(f, m, n) (qace.vbf.VectorialBooleanFunctionFull)" href="#qace.vbf.VectorialBooleanFunctionFull">VectorialBooleanFunctionFull</a></code></p>
+
+
+
+        <p>A vectorial Boolean function with pseudorandomly generated outputs.</p>
+<p>The function maps each input to a randomly chosen output value,
+determined by an optional random seed for reproducibility.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>m</code></b>
+              –
+              <div class="doc-md-description">
+                <p>The number of input bits.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>n</code></b>
+              –
+              <div class="doc-md-description">
+                <p>The number of output bits.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <p>Initializes the instance with random output values.</p>
+<p>Generates a random lookup table of output values using the provided
+seed. The global random state is preserved and restored after
+construction.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>m</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The number of input bits.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>n</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The number of output bits.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>rng_seed</code></b>
+                  (<code><span title="int">int</span> | None</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Optional seed for the random number generator to enable
+reproducibility.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/vbf/_random_cipher.py</code></summary>
+                    <pre class="highlight"><code class="language-python">def __init__(self, m: int, n: int, rng_seed: int | None = None) -&gt; None:
+    """Initializes the instance with random output values.
+
+    Generates a random lookup table of output values using the provided
+    seed. The global random state is preserved and restored after
+    construction.
+
+    Args:
+        m: The number of input bits.
+        n: The number of output bits.
+        rng_seed: Optional seed for the random number generator to enable
+            reproducibility.
+    """
+    state_backup = random.getstate()
+    random.seed(rng_seed)
+
+    c = random.choices(range(1 &lt;&lt; n), k=1 &lt;&lt; m)
+
+    # Restore the rng state
+    random.setstate(state_backup)
+
+    def f(x: int) -&gt; int:
+        return c[x]
+
+    VectorialBooleanFunctionFull.__init__(self, f, m, n)
+    del f
+    del c
+    gc.collect()</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.vbf.XORCipherVBF" class="doc doc-heading">
+              <code class="highlight language-python">XORCipherVBF(m)</code>
+
+<a href="#qace.vbf.XORCipherVBF" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="VectorialBooleanFunctionFull(f, m, n) (qace.vbf.VectorialBooleanFunctionFull)" href="#qace.vbf.VectorialBooleanFunctionFull">VectorialBooleanFunctionFull</a></code></p>
+
+
+
+        <p>A vectorial Boolean function implementing a XOR cipher.</p>
+<p>Takes a 2m-bit input, splits it into two m-bit halves, and produces
+their bitwise XOR as the m-bit output.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>m</code></b>
+              –
+              <div class="doc-md-description">
+                <p>The number of input bits (2*m for the two halves).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>n</code></b>
+              –
+              <div class="doc-md-description">
+                <p>The number of output bits (m).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <p>Initializes the XOR cipher vectorial Boolean function.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>m</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The bit width of each input half. The total input size is 2*m
+bits and the output size is m bits.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/vbf/_xor_cipher.py</code></summary>
+                    <pre class="highlight"><code class="language-python">def __init__(self, m: int) -&gt; None:
+    """Initializes the XOR cipher vectorial Boolean function.
+
+    Args:
+        m: The bit width of each input half. The total input size is 2*m
+            bits and the output size is m bits.
+    """
+
+    def xor(x: int) -&gt; int:
+        mask = (1 &lt;&lt; m) - 1
+        return ((x &amp; (mask &lt;&lt; m)) &gt;&gt; m) ^ (x &amp; mask)
+
+    VectorialBooleanFunctionFull.__init__(self, xor, 2 * m, m)
+    del xor</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.vbf.BiasedFunctionRS" class="doc doc-heading">
+              <code class="highlight language-python">BiasedFunctionRS(m, n, alpha, beta, p, seed=12345)</code>
+
+<a href="#qace.vbf.BiasedFunctionRS" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="VectorialBooleanFunctionFull(f, m, n) (qace.vbf._vbf.VectorialBooleanFunctionFull)" href="vbf/#qace.vbf._vbf.VectorialBooleanFunctionFull">VectorialBooleanFunctionFull</a></code></p>
+
+
+
+        <p>A vectorial Boolean function with a prescribed bias generated via rejection sampling.</p>
+<p>Uses a rejection sampling strategy to produce a function with a
+specific bias for a given mask pair (alpha, beta).</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>alpha</code></b>
+              –
+              <div class="doc-md-description">
+                <p>Input mask encoded as an integer.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>beta</code></b>
+              –
+              <div class="doc-md-description">
+                <p>Output mask encoded as an integer.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>seed</code></b>
+              –
+              <div class="doc-md-description">
+                <p>Random seed used for reproducible function generation.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>p</code></b>
+              –
+              <div class="doc-md-description">
+                <p>The prescribed bias for the mask pair (alpha, beta).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <p>Initializes the biased function by generating it via rejection sampling.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>m</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Input dimension (number of input bits).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>n</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Output dimension (number of output bits).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>alpha</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Input mask encoded as an m-bit integer.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>beta</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Output mask encoded as an n-bit integer.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>p</code></b>
+                  (<code><span title="float">float</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Desired bias for the mask pair (alpha, beta).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>seed</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>12345</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Random seed for reproducible generation.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/vbf/_biased_rs.py</code></summary>
+                    <pre class="highlight"><code class="language-python">def __init__(
+    self, m: int, n: int, alpha: int, beta: int, p: float, seed: int = 12345
+):
+    """Initializes the biased function by generating it via rejection sampling.
+
+    Args:
+        m: Input dimension (number of input bits).
+        n: Output dimension (number of output bits).
+        alpha: Input mask encoded as an m-bit integer.
+        beta: Output mask encoded as an n-bit integer.
+        p: Desired bias for the mask pair (alpha, beta).
+        seed: Random seed for reproducible generation.
+    """
+    self.alpha = alpha
+    self.beta = beta
+    self.seed = seed
+    self.p = p
+
+    # Save the rng state to make it independent of the seed used in this class
+    state_backup = random.getstate()
+    random.seed(self.seed)
+
+    lookup_table = _biased_f_rejection_sampling(self.p, m, n, self.alpha, self.beta)
+
+    # Restore the rng state
+    random.setstate(state_backup)
+
+    super().__init__(lambda x: lookup_table[x], m, n)</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="qace.vbf.int_to_fixed_bin_str" class="doc doc-heading">
+            <code class="highlight language-python">int_to_fixed_bin_str(x, n)</code>
+
+<a href="#qace.vbf.int_to_fixed_bin_str" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Get binary representation with a fixed number of bits of an integer.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>x</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The integer.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>n</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Number of bits.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="str">str</span></code>
+              –
+              <div class="doc-md-description">
+                <p><code>n</code>-bit binary representation of <code>x</code> as string without prefix.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_binary.py</code></summary>
+              <pre class="highlight"><code class="language-python">def int_to_fixed_bin_str(x: int, n: int) -&gt; str:
+    """Get binary representation with a fixed number of bits of an integer.
+
+    Args:
+        x: The integer.
+        n: Number of bits.
+
+    Returns:
+        `n`-bit binary representation of `x` as string without prefix.
+    """
+    return format(x, f"#0{n+2}b")[2:]</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="qace.vbf.int_to_twos_complement_repr" class="doc doc-heading">
+            <code class="highlight language-python">int_to_twos_complement_repr(x, n)</code>
+
+<a href="#qace.vbf.int_to_twos_complement_repr" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Get twos complement representation with fixed number of bits of an integer.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>x</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The integer.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>n</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Number of bits including the sign bit.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="int">int</span></code>
+              –
+              <div class="doc-md-description">
+                <p>Integer encoding the <code>n</code>-bit long twos complement of <code>x</code>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_binary.py</code></summary>
+              <pre class="highlight"><code class="language-python">def int_to_twos_complement_repr(x: int, n: int) -&gt; int:
+    """Get twos complement representation with fixed number of bits of an integer.
+
+    Args:
+        x: The integer.
+        n: Number of bits including the sign bit.
+
+    Returns:
+        Integer encoding the `n`-bit long twos complement of `x`.
+    """
+    s = int(x &lt; 0)
+    m = (1 &lt;&lt; (n - 1)) - 1
+    a = abs(x) &amp; m
+    if s == 1:
+        a ^= m
+        a += 1
+        a &amp;= m
+    y = (s &lt;&lt; (n - 1)) | a
+    return y</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="qace.vbf.get_parity" class="doc doc-heading">
+            <code class="highlight language-python">get_parity(x)</code>
+
+<a href="#qace.vbf.get_parity" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Optimized parity computation.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>x</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The integer &gt;= 0.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="int">int</span></code>
+              –
+              <div class="doc-md-description">
+                <p>Parity of the binary representation of the integer.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_binary.py</code></summary>
+              <pre class="highlight"><code class="language-python">@nb.jit
+def get_parity(x: int) -&gt; int:
+    """Optimized parity computation.
+
+    Args:
+        x: The integer &gt;= 0.
+
+    Returns:
+        Parity of the binary representation of the integer.
+    """
+    r = 0
+    while x != 0:
+        r ^= x &amp; 1
+        x &gt;&gt;= 1
+    return r</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="qace.vbf.mcx_msb0" class="doc doc-heading">
+            <code class="highlight language-python">mcx_msb0(circuit, control_qubits, target_qubit, ctrl_state=None)</code>
+
+<a href="#qace.vbf.mcx_msb0" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Multi-controlled X gate using MSB₀ convention (qubit index 0 = MSB).</p>
+<p>Translates from the project's MSB₀ convention to Qiskit's internal
+LSB₀ convention automatically.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>circuit</code></b>
+                  (<code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The quantum circuit to append the gate to.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>control_qubits</code></b>
+                  (<code><span title="collections.abc.Sequence">Sequence</span>[<span title="qiskit.circuit.quantumcircuit.QubitSpecifier">QubitSpecifier</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>Control qubit indices in MSB₀ order.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>target_qubit</code></b>
+                  (<code><span title="qiskit.circuit.quantumcircuit.QubitSpecifier">QubitSpecifier</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Target qubit index.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>ctrl_state</code></b>
+                  (<code><span title="str">str</span> | <span title="int">int</span> | None</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Value with MSB₀ order of the control state to trigger on.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_circuit_conventions.py</code></summary>
+              <pre class="highlight"><code class="language-python">def mcx_msb0(
+    circuit: QuantumCircuit,
+    control_qubits: Sequence[QubitSpecifier],
+    target_qubit: QubitSpecifier,
+    ctrl_state: str | int | None = None,
+):
+    """Multi-controlled X gate using MSB₀ convention (qubit index 0 = MSB).
+
+    Translates from the project's MSB₀ convention to Qiskit's internal
+    LSB₀ convention automatically.
+
+    Args:
+        circuit: The quantum circuit to append the gate to.
+        control_qubits: Control qubit indices in MSB₀ order.
+        target_qubit: Target qubit index.
+        ctrl_state: Value with MSB₀ order of the control state to trigger on.
+    """
+    circuit.mcx(
+        control_qubits[::-1],
+        target_qubit,
+        ctrl_state=ctrl_state,
+    )</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="qace.vbf.measure_msb0" class="doc doc-heading">
+            <code class="highlight language-python">measure_msb0(circuit, qubits, clbits)</code>
+
+<a href="#qace.vbf.measure_msb0" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Measurement using MSB₀ convention (qubit 0 maps to the most significant classical bit).</p>
+<p>Wraps Qiskit's <code>measure</code> but ensures that qubit index 0 maps to
+the most significant bit in the resulting bitstring.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>circuit</code></b>
+                  (<code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The quantum circuit to append measurements to.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>qubits</code></b>
+                  (<code><span title="qiskit.circuit.quantumcircuit.QubitSpecifier">QubitSpecifier</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Qubit indices to measure (in MSB₀ order).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>clbits</code></b>
+                  (<code><span title="qiskit.circuit.quantumcircuit.ClbitSpecifier">ClbitSpecifier</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Classical bit indices to store results.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_circuit_conventions.py</code></summary>
+              <pre class="highlight"><code class="language-python">def measure_msb0(
+    circuit: QuantumCircuit, qubits: QubitSpecifier, clbits: ClbitSpecifier
+):
+    """Measurement using MSB₀ convention (qubit 0 maps to the most significant classical bit).
+
+    Wraps Qiskit's `measure` but ensures that qubit index 0 maps to
+    the most significant bit in the resulting bitstring.
+
+    Args:
+        circuit: The quantum circuit to append measurements to.
+        qubits: Qubit indices to measure (in MSB₀ order).
+        clbits: Classical bit indices to store results.
+    """
+    circuit.measure(qubits[::-1], clbits)</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="qace.vbf.measure_all_msb0" class="doc doc-heading">
+            <code class="highlight language-python">measure_all_msb0(circuit, inplace=True, add_bits=True)</code>
+
+<a href="#qace.vbf.measure_all_msb0" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Measures all qubits using MSB₀ convention (qubit 0 → most significant classical bit).</p>
+<p>Wraps Qiskit's <code>measure_all()</code> but ensures that qubit index 0 maps to
+the most significant bit in the resulting bitstring.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>circuit</code></b>
+                  (<code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The quantum circuit to append measurements to.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>inplace</code></b>
+                  (<code><span title="bool">bool</span></code>, default:
+                      <code>True</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>If True, adds measurements to the existing circuit.
+If False, returns a new circuit with measurements.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>add_bits</code></b>
+                  (<code><span title="bool">bool</span></code>, default:
+                      <code>True</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>If True, adds new classical bits in a ClassicalRegister
+to store the measurements. If False, stores results in
+already existing classical bits (qubit n → classical bit
+(num_qubits - 1 - n) to maintain MSB₀ ordering).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span> | None</code>
+              –
+              <div class="doc-md-description">
+                <p>None if inplace=True, otherwise a new circuit with measurements.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="CircuitError">CircuitError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If add_bits=False but there are not enough classical bits.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_circuit_conventions.py</code></summary>
+              <pre class="highlight"><code class="language-python">def measure_all_msb0(
+    circuit: QuantumCircuit,
+    inplace: bool = True,
+    add_bits: bool = True,
+) -&gt; QuantumCircuit | None:
+    """Measures all qubits using MSB₀ convention (qubit 0 → most significant classical bit).
+
+    Wraps Qiskit's `measure_all()` but ensures that qubit index 0 maps to
+    the most significant bit in the resulting bitstring.
+
+    Args:
+        circuit: The quantum circuit to append measurements to.
+        inplace: If True, adds measurements to the existing circuit.
+            If False, returns a new circuit with measurements.
+        add_bits: If True, adds new classical bits in a ClassicalRegister
+            to store the measurements. If False, stores results in
+            already existing classical bits (qubit n → classical bit
+            (num_qubits - 1 - n) to maintain MSB₀ ordering).
+
+    Returns:
+        None if inplace=True, otherwise a new circuit with measurements.
+
+    Raises:
+        CircuitError: If add_bits=False but there are not enough classical bits.
+    """
+    n = circuit.num_qubits
+
+    if not inplace:
+        circuit = circuit.copy()
+
+    if add_bits:
+        circuit.add_register(ClassicalRegister(n))
+
+    circuit.measure(range(n)[::-1], range(n))
+
+    if not inplace:
+        return circuit
+    else:
+        return None</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="qace.vbf.mask_equality_count" class="doc doc-heading">
+            <code class="highlight language-python">mask_equality_count(f, a, b)</code>
+
+<a href="#qace.vbf.mask_equality_count" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Computes the so-called "mask equality count" for a function and input-/output-masks.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>f</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="VectorialBooleanFunction(f, m, n) (qace.vbf.VectorialBooleanFunction)" href="#qace.vbf.VectorialBooleanFunction">VectorialBooleanFunction</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The function.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>a</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Input mask.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>b</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Output mask.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="int">int</span></code>
+              –
+              <div class="doc-md-description">
+                <p>The number of x with <x, a=""> + <f(x), b=""> = 0.</f(x),></x,></p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_linear_cryptanalysis_primitives.py</code></summary>
+              <pre class="highlight"><code class="language-python">def mask_equality_count(f: VectorialBooleanFunction, a: int, b: int) -&gt; int:
+    """Computes the so-called "mask equality count" for a function and input-/output-masks.
+
+    Args:
+        f: The function.
+        a: Input mask.
+        b: Output mask.
+
+    Returns:
+        The number of x with &lt;x, a&gt; + &lt;f(x), b&gt; = 0.
+    """
+    c = 0
+    for x in range(1 &lt;&lt; f.m):
+        y = f.eval(x)
+        e = get_parity(x &amp; a) + get_parity(y &amp; b)
+        c += e % 2 == 0
+    return c</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="qace.vbf.mask_equality_probability" class="doc doc-heading">
+            <code class="highlight language-python">mask_equality_probability(f, a, b, mec=None)</code>
+
+<a href="#qace.vbf.mask_equality_probability" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Converts a mask equality count to its associated probability.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>f</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="VectorialBooleanFunction(f, m, n) (qace.vbf.VectorialBooleanFunction)" href="#qace.vbf.VectorialBooleanFunction">VectorialBooleanFunction</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The function.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>a</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Input mask.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>b</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Output mask.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>mec</code></b>
+                  (<code><span title="int">int</span> | None</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Optionally, the precomputed mask equality count.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="float">float</span></code>
+              –
+              <div class="doc-md-description">
+                <p>The mask_equality_count(f, a, b) divided by (1&lt;&lt;f.m).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_linear_cryptanalysis_primitives.py</code></summary>
+              <pre class="highlight"><code class="language-python">def mask_equality_probability(
+    f: VectorialBooleanFunction,
+    a: int,
+    b: int,
+    mec: int | None = None,
+) -&gt; float:
+    """Converts a mask equality count to its associated probability.
+
+    Args:
+        f: The function.
+        a: Input mask.
+        b: Output mask.
+        mec: Optionally, the precomputed mask equality count.
+
+    Returns:
+        The mask_equality_count(f, a, b) divided by (1&lt;&lt;f.m).
+    """
+    if mec == None:
+        p = mask_equality_count(f, a, b) / (1 &lt;&lt; f.m)
+    else:
+        p = mec / (1 &lt;&lt; f.m)
+    return p</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="qace.vbf.walsh_transform" class="doc doc-heading">
+            <code class="highlight language-python">walsh_transform(f, a, b, mec=None)</code>
+
+<a href="#qace.vbf.walsh_transform" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Computes the Walsh transform for given masks with respect to a function.</p>
+<p>The function initializes a variable to accumulate the Walsh transform
+result. It calculates the total number of possible inputs (M = 2 ** m) and
+iterates through each possible input x. For each input, it computes the
+parity of the bits specified by a and the output of the function f masked
+by b. The result is adjusted by raising -1 to the power of the computed
+parity, effectively contributing either +1 or -1 to the total Walsh
+transform value. The function returns the accumulated result.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>f</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="VectorialBooleanFunction(f, m, n) (qace.vbf.VectorialBooleanFunction)" href="#qace.vbf.VectorialBooleanFunction">VectorialBooleanFunction</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The function.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>a</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Input mask.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>b</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Output mask.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>mec</code></b>
+                  (<code><span title="int">int</span> | None</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Optionally, the precomputed mask equality count.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="int">int</span></code>
+              –
+              <div class="doc-md-description">
+                <p>The computed Walsh transform value, which indicates the correlation</p>
+              </div>
+            </li>
+            <li>
+                  <code><span title="int">int</span></code>
+              –
+              <div class="doc-md-description">
+                <p>between the two masks with respect to the function <code>f</code>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_linear_cryptanalysis_primitives.py</code></summary>
+              <pre class="highlight"><code class="language-python">def walsh_transform(
+    f: VectorialBooleanFunction,
+    a: int,
+    b: int,
+    mec: int | None = None,
+) -&gt; int:
+    """Computes the Walsh transform for given masks with respect to a function.
+
+    The function initializes a variable to accumulate the Walsh transform
+    result. It calculates the total number of possible inputs (M = 2 ** m) and
+    iterates through each possible input x. For each input, it computes the
+    parity of the bits specified by a and the output of the function f masked
+    by b. The result is adjusted by raising -1 to the power of the computed
+    parity, effectively contributing either +1 or -1 to the total Walsh
+    transform value. The function returns the accumulated result.
+
+    Args:
+        f: The function.
+        a: Input mask.
+        b: Output mask.
+        mec: Optionally, the precomputed mask equality count.
+
+    Returns:
+        The computed Walsh transform value, which indicates the correlation
+        between the two masks with respect to the function `f`.
+    """
+    if mec == None:
+        e = mask_equality_count(f, a, b)
+    else:
+        e = mec
+    w = 2 * e - (1 &lt;&lt; f.m)
+    return w</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="qace.vbf.correlation" class="doc doc-heading">
+            <code class="highlight language-python">correlation(f, a, b, mec=None)</code>
+
+<a href="#qace.vbf.correlation" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Computes the correlation of a function with respect to input and output masks.</p>
+<p>The function calculates the total number of possible inputs (N = 2^n) and
+then calls the walsh_transform function to compute the Walsh transform
+value for the given masks a and b. The result is normalized by dividing by
+N, providing a correlation value that indicates the strength of the
+relationship between the masks with respect to the function f. This
+correlation value is useful for analyzing the influence of specific bits
+on the output of the Boolean function.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>f</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="VectorialBooleanFunction(f, m, n) (qace.vbf.VectorialBooleanFunction)" href="#qace.vbf.VectorialBooleanFunction">VectorialBooleanFunction</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The function.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>a</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Input mask.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>b</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Output mask.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>mec</code></b>
+                  (<code><span title="int">int</span> | None</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Optionally, the precomputed mask equality count.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="float">float</span></code>
+              –
+              <div class="doc-md-description">
+                <p>The computed correlation value, normalized by the total number of</p>
+              </div>
+            </li>
+            <li>
+                  <code><span title="float">float</span></code>
+              –
+              <div class="doc-md-description">
+                <p>inputs <code>1&lt;&lt;f.m</code>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_linear_cryptanalysis_primitives.py</code></summary>
+              <pre class="highlight"><code class="language-python">def correlation(
+    f: VectorialBooleanFunction,
+    a: int,
+    b: int,
+    mec: int | None = None,
+) -&gt; float:
+    """Computes the correlation of a function with respect to input and output masks.
+
+    The function calculates the total number of possible inputs (N = 2^n) and
+    then calls the walsh_transform function to compute the Walsh transform
+    value for the given masks a and b. The result is normalized by dividing by
+    N, providing a correlation value that indicates the strength of the
+    relationship between the masks with respect to the function f. This
+    correlation value is useful for analyzing the influence of specific bits
+    on the output of the Boolean function.
+
+    Args:
+        f: The function.
+        a: Input mask.
+        b: Output mask.
+        mec: Optionally, the precomputed mask equality count.
+
+    Returns:
+        The computed correlation value, normalized by the total number of
+        inputs `1&lt;&lt;f.m`.
+    """
+    corr = walsh_transform(f, a, b, mec) / (1 &lt;&lt; f.m)
+    return corr</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="qace.vbf.bias" class="doc doc-heading">
+            <code class="highlight language-python">bias(f, a, b, mec=None)</code>
+
+<a href="#qace.vbf.bias" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Computes the bias of a function with respect to input and output masks.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>f</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="VectorialBooleanFunction(f, m, n) (qace.vbf.VectorialBooleanFunction)" href="#qace.vbf.VectorialBooleanFunction">VectorialBooleanFunction</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The function.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>a</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Input mask.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>b</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Output mask.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>mec</code></b>
+                  (<code><span title="int">int</span> | None</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Optionally, the precomputed mask equality count.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="float">float</span></code>
+              –
+              <div class="doc-md-description">
+                <p>The computed bias.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_linear_cryptanalysis_primitives.py</code></summary>
+              <pre class="highlight"><code class="language-python">def bias(
+    f: VectorialBooleanFunction,
+    a: int,
+    b: int,
+    mec: int | None = None,
+) -&gt; float:
+    """Computes the bias of a function with respect to input and output masks.
+
+    Args:
+        f: The function.
+        a: Input mask.
+        b: Output mask.
+        mec: Optionally, the precomputed mask equality count.
+
+    Returns:
+        The computed bias.
+    """
+    return correlation(f, a, b, mec) / 2</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="qace.vbf.approximate_mec" class="doc doc-heading">
+            <code class="highlight language-python">approximate_mec(sample_inputs, sample_outputs, a, b)</code>
+
+<a href="#qace.vbf.approximate_mec" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Computes the approximate mask equality count from sample data.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>sample_inputs</code></b>
+                  (<code><span title="collections.abc.Sequence">Sequence</span>[<span title="int">int</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>Input values to use.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>sample_outputs</code></b>
+                  (<code><span title="collections.abc.Sequence">Sequence</span>[<span title="int">int</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>Output values corresponding to the sample inputs.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>a</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Input mask.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>b</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Output mask.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="int">int</span></code>
+              –
+              <div class="doc-md-description">
+                <p>The computed approximate mask equality count.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_linear_cryptanalysis_primitives.py</code></summary>
+              <pre class="highlight"><code class="language-python">def approximate_mec(
+    sample_inputs: Sequence[int],
+    sample_outputs: Sequence[int],
+    a: int,
+    b: int,
+) -&gt; int:
+    """Computes the approximate mask equality count from sample data.
+
+    Args:
+        sample_inputs: Input values to use.
+        sample_outputs: Output values corresponding to the sample inputs.
+        a: Input mask.
+        b: Output mask.
+
+    Returns:
+        The computed approximate mask equality count.
+    """
+    approx_mec = sum(
+        [
+            ((get_parity(a &amp; x) ^ get_parity(b &amp; y)) % 2) ^ 1
+            for (x, y) in zip(sample_inputs, sample_outputs)
+        ]
+    )
+    return approx_mec</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="qace.vbf.approximate_bias" class="doc doc-heading">
+            <code class="highlight language-python">approximate_bias(sample_inputs, sample_outputs, a, b)</code>
+
+<a href="#qace.vbf.approximate_bias" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Computes the approximate bias from sample data.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>sample_inputs</code></b>
+                  (<code><span title="collections.abc.Sequence">Sequence</span>[<span title="int">int</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>Input values to use.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>sample_outputs</code></b>
+                  (<code><span title="collections.abc.Sequence">Sequence</span>[<span title="int">int</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>Output values corresponding to the sample inputs.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>a</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Input mask.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>b</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Output mask.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="float">float</span></code>
+              –
+              <div class="doc-md-description">
+                <p>The computed approximate bias.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_linear_cryptanalysis_primitives.py</code></summary>
+              <pre class="highlight"><code class="language-python">def approximate_bias(
+    sample_inputs: Sequence[int],
+    sample_outputs: Sequence[int],
+    a: int,
+    b: int,
+) -&gt; float:
+    """Computes the approximate bias from sample data.
+
+    Args:
+        sample_inputs: Input values to use.
+        sample_outputs: Output values corresponding to the sample inputs.
+        a: Input mask.
+        b: Output mask.
+
+    Returns:
+        The computed approximate bias.
+    """
+    s = len(sample_inputs)
+    approx_bias = (2 * approximate_mec(sample_inputs, sample_outputs, a, b) - s) / (
+        2 * s
+    )
+    return approx_bias</code></pre>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../algorithm/preimage/" class="btn btn-neutral float-left" title="Preimage"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="vbf/" class="btn btn-neutral float-right" title="VBF">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Fraunhofer-AISEC/qace-sdk" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../algorithm/preimage/" style="color: #fcfcfc">« Previous</a></span>
+    
+    
+      <span><a href="vbf/" style="color: #fcfcfc">Next »</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body></html>

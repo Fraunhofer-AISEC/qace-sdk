@@ -1,0 +1,309 @@
+<!DOCTYPE html><html class="writer-html5" lang="en"><head>
+<meta charset="utf-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="Quantum Circuit Execution SDK" name="description">
+<link href="img/favicon.ico" rel="shortcut icon">
+<title>QACE SDK</title>
+<link href="css/theme.css" rel="stylesheet">
+<link href="css/theme_extra.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet">
+<link href="assets/_mkdocstrings.css" rel="stylesheet">
+<script>
+        // Current page data
+        var mkdocs_page_name = "Home";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+<!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style></head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="."> QACE SDK
+        </a><div role="search">
+<form action="./search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text">
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Home</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#the-three-layers">The Three Layers</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#architecture">Architecture</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#usage-example">Usage Example</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#running-tests">Running Tests</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#status">Status</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#license">License</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#contact">Contact</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#acknowledgements">Acknowledgements</a>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal">Execution Layer</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="execution/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="execution/base/">Base</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="execution/aer/">Aer Executor</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="execution/ibm_runtime/">IBM Runtime Executor</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="execution/iterative/">Iterative Executor</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal">Algorithm Layer</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="algorithm/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="algorithm/base/">Base</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="algorithm/cea/">Correlation Extraction</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="algorithm/sith/">Stochastic Identification via Thresholding</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="algorithm/preimage/">Preimage</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal">Vectorial Boolean Function (VBF) Layer</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="vbf/">Overview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vbf/vbf/">VBF</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vbf/random_vbf/">Random</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vbf/lookup_table/">Lookup Table</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vbf/rijndael_s_box/">Rijndael_s_box</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vbf/xor_cipher/">XOR-Cipher</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vbf/biased_rs/">Biased Function RS</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vbf/binary/">Binary</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vbf/circuit_conventions/">Circuit Conventions</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href=".">QACE SDK</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="."></a></li>
+<li class="breadcrumb-item active">Home</li>
+<li class="wy-breadcrumbs-aside">
+<a class="icon icon-github" href="https://github.com/Fraunhofer-AISEC/qace-sdk/edit/master/docs/index.md"> Edit on GitHub</a>
+</li>
+</ul>
+<hr>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<!--
+Copyright 2026 Fraunhofer AISEC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+--><h1 id="qace">QACE<a class="headerlink" href="#qace" title="Permanent link">¶</a></h1>
+<p><strong>Quantum-Assisted Cryptanalytic Exploration</strong> is a toolkit for investigating cryptanalytic problems using quantum
+computing capabilities.</p>
+<p>The SDK provides a framework for analyzing classical ciphers, S-boxes, and Boolean functions using quantum algorithms.
+It integrates three components into a coherent workflow: a model of the analysis target, a corresponding quantum
+algorithm, and the execution of the resulting circuit on a backend. Because these three layers are clearly separated,
+each component can be exchanged independently, ranging from a local simulator to physical IBM Quantum hardware, without
+modifying the algorithm itself.</p>
+<p>For more information, see the <a href="../PLACEHOLDER">documentation</a>.</p>
+<h2 id="the-three-layers">The Three Layers<a class="headerlink" href="#the-three-layers" title="Permanent link">¶</a></h2>
+<p>The SDK is designed as a framework. Each layer defines an abstract interface and a set of base classes; the components
+listed below are reference implementations illustrating how the respective abstractions can be realized. Users are
+expected to extend these layers with their own implementations.</p>
+<ul>
+<li><strong>VBF Layer.</strong> Defines an abstract representation of vectorial Boolean functions, which serve as the cryptanalytic
+  targets under investigation. Any function that conforms to this interface can be analyzed. The provided
+  implementations, including S-boxes, XOR ciphers, lookup tables, and both random and deliberately biased functions, are
+  examples of such targets.</li>
+<li><strong>Algorithm Layer.</strong> Defines an abstract quantum algorithm that operates on a target and produces a structured result.
+  It establishes the common contract shared by all algorithms. The provided implementations, such as Correlation
+  Extraction, Amplitude Amplification, Preimage search, and SITH, are examples that build on this abstraction.</li>
+<li><strong>Execution Layer.</strong> Defines an abstract interface for executing quantum circuits, decoupling algorithms from any
+  particular backend. The provided implementations, including the Aer simulator, the IBM Quantum Runtime, and an
+  iterative executor, are examples of concrete backends.</li>
+</ul>
+<p>Each algorithm constructs its circuit and delegates execution to an injected <code>CircuitExecutor</code>. This design keeps the
+algorithm logic fully decoupled from the backend and allows every layer to be exchanged or extended independently.</p>
+<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">¶</a></h2>
+<div class="mermaid">graph TB
+    subgraph "Problem"
+        PF["Vectorial Boolean Function"]
+    end
+
+    subgraph "Algorithm"
+        A["Quantum Algorithm"]
+    end
+
+    subgraph "Execution"
+        E["Executor"]
+    end
+
+    PF -.-&gt;|"Oracle"| A
+    E -.-&gt;|"injected"| A
+    A --&gt;|"Result"| R["AlgorithmResult"]
+    E --&gt;|"Result"| ER["ExecResult"]
+</div>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">¶</a></h2>
+<pre class="highlight"><code class="language-bash">git clone https://github.com/Fraunhofer-AISEC/qace-sdk.git
+cd qace-sdk
+python -m venv .venv
+source .venv/bin/activate
+make install</code></pre>
+<p>Requires Python ≥ 3.12.</p>
+<h2 id="usage-example">Usage Example<a class="headerlink" href="#usage-example" title="Permanent link">¶</a></h2>
+<pre class="highlight"><code class="language-python">from qace.vbf import rijndael_s_box
+from qace.algorithm import CorrelationExtraction
+from qace.execution import AerExecutor
+
+executor = AerExecutor.default()
+cea = CorrelationExtraction(executor=executor, vbf=rijndael_s_box)
+result = cea.run()
+
+print(result.mask_pairs)</code></pre>
+<h2 id="running-tests">Running Tests<a class="headerlink" href="#running-tests" title="Permanent link">¶</a></h2>
+<p>Tests use <a href="https://docs.pytest.org/">pytest</a>:</p>
+<pre class="highlight"><code class="language-bash">make test              # install (with test extras) and run all tests</code></pre>
+<p>or</p>
+<pre class="highlight"><code class="language-bash">make install
+pytest tests/execution/  # run a specific module</code></pre>
+<h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">¶</a></h2>
+<p>The docs are built with <a href="https://www.mkdocs.org/">MkDocs</a>:</p>
+<pre class="highlight"><code class="language-bash">make docs-serve   # live-reload server at http://127.0.0.1:8000
+make docs-build   # static HTML in site/</code></pre>
+<p>Documentation dependencies are declared under the <code>docs</code> extra in <code>pyproject.toml</code>
+(<code>pip install -e ".[docs]"</code>).</p>
+<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Execution</td>
+<td>implemented &amp; tested</td>
+</tr>
+<tr>
+<td>Algorithm</td>
+<td>implemented &amp; tested</td>
+</tr>
+<tr>
+<td>VBF</td>
+<td>implemented &amp; tested</td>
+</tr>
+</tbody>
+</table>
+<p>The API is still evolving and may change before the first stable release.</p>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">¶</a></h2>
+<p>Apache-2.0 — see the <a href="../LICENSE">LICENSE</a> file, or contact the authors for details.</p>
+<h2 id="contact">Contact<a class="headerlink" href="#contact" title="Permanent link">¶</a></h2>
+<p>For questions or feedback:
+- qace-sdk@aisec.fraunhofer.de</p>
+<p>For bugs and feature requests:
+- Please create an issue in the repository</p>
+<h2 id="acknowledgements">Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permanent link">¶</a></h2>
+<p>We thank the Bavarian Ministry of Economic Affairs, Regional Development and Energy,
+ with funds from the Hightech Agenda Bayern, for funding the theoretical work (SITH-Algorithm) as part of the
+ BayQS project. Furthermore, we thank the Munich Quantum Valley,  which is supported by the
+ Bavarian state government, with funds from the Hightech Agenda
+ Bayern Plus, for funding the implementation of the QACE-SDK as part of the QACI project.</p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-right" href="execution/" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span>
+<a class="fa fa-github" href="https://github.com/Fraunhofer-AISEC/qace-sdk" style="color: #fcfcfc"> GitHub</a>
+</span>
+<span><a href="execution/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script>var base_url = ".";</script>
+<script src="js/theme_extra.js"></script>
+<script src="js/theme.js"></script>
+<script src="search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script>
+
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body></html><!--
+MkDocs version : 1.6.1
+Build Date UTC : 2026-08-18 14:07:31.540625+00:00
+-->

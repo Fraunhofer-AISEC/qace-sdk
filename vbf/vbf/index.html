@@ -1,0 +1,890 @@
+<!DOCTYPE html><html class="writer-html5" lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>VBF - QACE SDK</title>
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="../../css/theme_extra.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet">
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "VBF";
+        var mkdocs_page_input_path = "vbf/vbf.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QACE SDK
+        </a><div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here">
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal">Execution Layer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/base/">Base</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/aer/">Aer Executor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/ibm_runtime/">IBM Runtime Executor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/iterative/">Iterative Executor</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal">Algorithm Layer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/base/">Base</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/cea/">Correlation Extraction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/sith/">Stochastic Identification via Thresholding</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/preimage/">Preimage</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current">Vectorial Boolean Function (VBF) Layer</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">VBF</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#qace.vbf._vbf">_vbf</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf._vbf.VectorialBooleanFunction">VectorialBooleanFunction</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf._vbf.VectorialBooleanFunctionFull">VectorialBooleanFunctionFull</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../random_vbf/">Random</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../lookup_table/">Lookup Table</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../rijndael_s_box/">Rijndael_s_box</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../xor_cipher/">XOR-Cipher</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../biased_rs/">Biased Function RS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../binary/">Binary</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../circuit_conventions/">Circuit Conventions</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QACE SDK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+          <li class="breadcrumb-item">Vectorial Boolean Function (VBF) Layer</li>
+      <li class="breadcrumb-item active">VBF</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Fraunhofer-AISEC/qace-sdk/edit/master/docs/vbf/vbf.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <!--
+Copyright 2026 Fraunhofer AISEC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+--><h1 id="vectorial-boolean-function">Vectorial Boolean Function<a class="headerlink" href="#vectorial-boolean-function" title="Permanent link">¶</a></h1>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="qace.vbf._vbf" class="doc doc-heading">
+            <code>qace.vbf._vbf</code>
+
+
+<a href="#qace.vbf._vbf" class="headerlink" title="Permanent link">¶</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Vectorial Boolean function abstraction and full precomputed implementation.</p>
+<p>This module defines the abstract base class for vectorial Boolean functions
+and a concrete implementation that precomputes and stores all function values.
+It provides methods for evaluation, quantum circuit construction, and sparse
+unitary generation.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.vbf._vbf.VectorialBooleanFunction" class="doc doc-heading">
+              <code class="highlight language-python">VectorialBooleanFunction(f, m, n)</code>
+
+<a href="#qace.vbf._vbf.VectorialBooleanFunction" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="abc.ABC">ABC</span></code></p>
+
+
+
+        <p>Class for modelling vectorial Boolean functions.</p>
+
+        <p>Initializes a vectorial Boolean function.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>f</code></b>
+                  (<code><span title="collections.abc.Callable">Callable</span>[[<span title="int">int</span>], <span title="int">int</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>A vectorial Boolean function from <code>m</code> to <code>n</code> bits, which itself is a function from <code>int</code> to <code>int</code>.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>m</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Domain bit count.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>n</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Image bit count.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code>None</code>
+              –
+              <div class="doc-md-description">
+                <p>The initialized function.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/vbf/_vbf.py</code></summary>
+                    <pre class="highlight"><code class="language-python">@abstractmethod
+def __init__(self, f: Callable[[int], int], m: int, n: int) -&gt; None:
+    """Initializes a vectorial Boolean function.
+
+    Args:
+        f: A vectorial Boolean function from `m` to `n` bits, which itself is a function from `int` to `int`.
+        m: Domain bit count.
+        n: Image bit count.
+
+    Returns:
+        The initialized function.
+    """
+    self.m = m
+    self.n = n
+    self.M = 1 &lt;&lt; self.m
+    self.N = 1 &lt;&lt; self.n
+    self._f = f</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.vbf._vbf.VectorialBooleanFunction.eval" class="doc doc-heading">
+            <code class="highlight language-python">eval(x)</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
+
+<a href="#qace.vbf._vbf.VectorialBooleanFunction.eval" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Evaluates the vectorial Boolean function at a point <code>x</code>.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>x</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Input argument <code>x</code>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="int">int</span></code>
+              –
+              <div class="doc-md-description">
+                <p>Value <code>f(x)</code>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_vbf.py</code></summary>
+              <pre class="highlight"><code class="language-python">@abstractmethod
+def eval(self, x: int) -&gt; int:
+    """Evaluates the vectorial Boolean function at a point `x`.
+
+    Args:
+        x: Input argument `x`.
+
+    Returns:
+        Value `f(x)`.
+    """
+    pass</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.vbf._vbf.VectorialBooleanFunction.to_circuit" class="doc doc-heading">
+            <code class="highlight language-python">to_circuit(method='qiskit_esop_generator')</code>
+
+<a href="#qace.vbf._vbf.VectorialBooleanFunction.to_circuit" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Constructs a quantum circuit representing the Boolean function using the specified method. Override for custom circuit implementations.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>method</code></b>
+                  (<code><span title="str">str</span></code>, default:
+                      <code>'qiskit_esop_generator'</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>"minterms" to use the minterm-based approach (truth table) or
+    "qiskit_esop_generator" to use the qiskit esop_generator class, that uses Shannon's expansion
+    based term minimization.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>
+              –
+              <div class="doc-md-description">
+                <p>The Qiskit quantum circuit encoding the Boolean function.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_vbf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def to_circuit(self, method: str = "qiskit_esop_generator") -&gt; QuantumCircuit:
+    """Constructs a quantum circuit representing the Boolean function using the specified method. Override for custom circuit implementations.
+
+    Args:
+        method: "minterms" to use the minterm-based approach (truth table) or
+                "qiskit_esop_generator" to use the qiskit esop_generator class, that uses Shannon's expansion
+                based term minimization.
+
+    Returns:
+        The Qiskit quantum circuit encoding the Boolean function.
+    """
+    if method == "minterms":
+        return self._to_circuit_minterms()
+    elif method == "qiskit_esop_generator":
+        return self._to_ciruit_qiskit_esop_generator()
+    else:
+        ValueError(
+            f'method must be "minterms" or "qiskit_esop_generator" found: {method}'
+        )</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.vbf._vbf.VectorialBooleanFunction.to_sparse_unitary" class="doc doc-heading">
+            <code class="highlight language-python">to_sparse_unitary()</code>
+
+<a href="#qace.vbf._vbf.VectorialBooleanFunction.to_sparse_unitary" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Creates a <code>scikit.sparse.coo_array</code> corresponding to an oracle unitary for the function.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="scipy.sparse.csc_array">csc_array</span></code>
+              –
+              <div class="doc-md-description">
+                <p>Sparsely encoded unitary oracle corresponding to the function.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_vbf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def to_sparse_unitary(self) -&gt; csc_array:
+    """Creates a `scikit.sparse.coo_array` corresponding to an oracle unitary for the function.
+
+    Returns:
+        Sparsely encoded unitary oracle corresponding to the function.
+    """
+
+    # Custom `to_gate` function, as `tweedledum` does not build with `pip` for some reason, as of 05.07.2024, 00:14 with version v1.1.1.,
+    # so Qiskits `classical_function` API cannot be used.
+    # See also https://docs.quantum.ibm.com/api/qiskit/classicalfunction and https://github.com/boschmitt/tweedledum/issues/186.
+    def col_generator(f: VectorialBooleanFunction):
+        for x in range(1 &lt;&lt; f.m):
+            for y in range(1 &lt;&lt; f.n):
+                # Determines index for setting one according to the oracle description |x&gt;|y&gt; |-&gt; |x&gt;|y + f(x)&gt;.
+                yield (x &lt;&lt; f.n) | (y ^ f.eval(x))
+
+    size = 1 &lt;&lt; (self.m + self.n)
+    unitary = coo_array(
+        ([1] * size, (list(col_generator(self)), range(size))),
+        shape=(size, size),
+        dtype=complex,
+    ).tocsc()
+    return unitary</code></pre>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.vbf._vbf.VectorialBooleanFunctionFull" class="doc doc-heading">
+              <code class="highlight language-python">VectorialBooleanFunctionFull(f, m, n)</code>
+
+<a href="#qace.vbf._vbf.VectorialBooleanFunctionFull" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="VectorialBooleanFunction(f, m, n) (qace.vbf._vbf.VectorialBooleanFunction)" href="#qace.vbf._vbf.VectorialBooleanFunction">VectorialBooleanFunction</a></code></p>
+
+
+
+        <p>A fully precomputed vectorial Boolean function.</p>
+<p>Stores all output values of the function in a bitarray for efficient
+evaluation without recomputation.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>f</code></b>
+              –
+              <div class="doc-md-description">
+                <p>A bitarray storing the precomputed output values of the function.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>m</code></b>
+              –
+              <div class="doc-md-description">
+                <p>The number of input bits.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>n</code></b>
+              –
+              <div class="doc-md-description">
+                <p>The number of output bits.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>M</code></b>
+              –
+              <div class="doc-md-description">
+                <p>The size of the input domain (2^m).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>N</code></b>
+              –
+              <div class="doc-md-description">
+                <p>The size of the output domain (2^n).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+        <p>Initializes a vectorial Boolean function. Precomputes and stores all values of <code>f</code> using the given function object.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>f</code></b>
+                  (<code><span title="collections.abc.Callable">Callable</span>[[<span title="int">int</span>], <span title="int">int</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>A vectorial Boolean function from <code>m</code> to <code>n</code> bits, which itself is a function from <code>int</code> to <code>int</code>.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>m</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Domain bit count.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>n</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Image bit count.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code>None</code>
+              –
+              <div class="doc-md-description">
+                <p>The initialized function.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/vbf/_vbf.py</code></summary>
+                    <pre class="highlight"><code class="language-python">def __init__(self, f: Callable[[int], int], m: int, n: int) -&gt; None:
+    """Initializes a vectorial Boolean function. Precomputes and stores all values of `f` using the given function object.
+
+    Args:
+        f: A vectorial Boolean function from `m` to `n` bits, which itself is a function from `int` to `int`.
+        m: Domain bit count.
+        n: Image bit count.
+
+    Returns:
+        The initialized function.
+    """
+    assert m &lt;= MAX_BIT_COUNT and n &lt;= MAX_BIT_COUNT
+    super().__init__(f, m, n)
+    self.f = bitarray((1 &lt;&lt; m) * n)
+    for x in range(1 &lt;&lt; m):
+        self.f[x * n : (x + 1) * n] = bitarray(format(f(x), f"#0{n+2}b")[2:])
+    self.__call__ = lambda x: int(self.f[(x * n) : ((x + 1) * n)].to01(), 2)</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.vbf._vbf.VectorialBooleanFunctionFull.eval" class="doc doc-heading">
+            <code class="highlight language-python">eval(x)</code>
+
+<a href="#qace.vbf._vbf.VectorialBooleanFunctionFull.eval" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Evaluates the vectorial Boolean function at a point <code>x</code>.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>x</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Input argument <code>x</code>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="int">int</span></code>
+              –
+              <div class="doc-md-description">
+                <p>Value <code>f(x)</code>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_vbf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def eval(self, x: int) -&gt; int:
+    """Evaluates the vectorial Boolean function at a point `x`.
+
+    Args:
+        x: Input argument `x`.
+
+    Returns:
+        Value `f(x)`.
+    """
+    return self.__call__(x)</code></pre>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../random_vbf/" class="btn btn-neutral float-right" title="Random">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Fraunhofer-AISEC/qace-sdk" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../" style="color: #fcfcfc">« Previous</a></span>
+    
+    
+      <span><a href="../random_vbf/" style="color: #fcfcfc">Next »</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body></html>

@@ -1,0 +1,1063 @@
+<!DOCTYPE html><html class="writer-html5" lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>Aer Executor - QACE SDK</title>
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="../../css/theme_extra.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet">
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Aer Executor";
+        var mkdocs_page_input_path = "execution/aer.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QACE SDK
+        </a><div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here">
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current">Execution Layer</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../base/">Base</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Aer Executor</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#qace.execution._aer">_aer</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.execution._aer.AerExecutor">AerExecutor</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.execution._aer.AerBackendV2Executor">AerBackendV2Executor</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ibm_runtime/">IBM Runtime Executor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../iterative/">Iterative Executor</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal">Algorithm Layer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/base/">Base</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/cea/">Correlation Extraction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/sith/">Stochastic Identification via Thresholding</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/preimage/">Preimage</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal">Vectorial Boolean Function (VBF) Layer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/vbf/">VBF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/random_vbf/">Random</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/lookup_table/">Lookup Table</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/rijndael_s_box/">Rijndael_s_box</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/xor_cipher/">XOR-Cipher</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/biased_rs/">Biased Function RS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/binary/">Binary</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/circuit_conventions/">Circuit Conventions</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QACE SDK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+          <li class="breadcrumb-item">Execution Layer</li>
+      <li class="breadcrumb-item active">Aer Executor</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Fraunhofer-AISEC/qace-sdk/edit/master/docs/execution/aer.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <!--
+Copyright 2026 Fraunhofer AISEC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+--><h1 id="aer-executor">Aer Executor<a class="headerlink" href="#aer-executor" title="Permanent link">¶</a></h1>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="qace.execution._aer" class="doc doc-heading">
+            <code>qace.execution._aer</code>
+
+
+<a href="#qace.execution._aer" class="headerlink" title="Permanent link">¶</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Aer-based circuit execution module.</p>
+<p>Provides executor implementations that leverage the Qiskit Aer simulator
+for running quantum circuits. Includes support for both direct AerSimulator
+usage and simulation of <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit/qiskit.providers.BackendV2">BackendV2</a>-compatible backends.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.execution._aer.AerExecutor" class="doc doc-heading">
+              <code class="highlight language-python">AerExecutor(config=None)</code>
+
+<a href="#qace.execution._aer.AerExecutor" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="CircuitExecutor() (qace.execution._base.CircuitExecutor)" href="../base/#qace.execution._base.CircuitExecutor">CircuitExecutor</a></code></p>
+
+
+
+        <p>A circuit executor that uses the Qiskit AerSimulator backend.</p>
+<p>This executor wraps the Qiskit Aer simulation pipeline. The setup is
+split between construction time and execution time:</p>
+<p>During <code>__init__</code>:</p>
+<pre class="highlight"><code class="language-python"># Step 1: Backend construction
+backend = AerSimulator(**config.backend_options)
+
+# Step 2: Pass manager construction
+pass_manager = generate_preset_pass_manager(
+    backend=backend, **config.transpiler_options
+)</code></pre>
+<p>During each <code>execute()</code> call:</p>
+<pre class="highlight"><code class="language-python"># Step 3: Transpilation
+transpiled = pass_manager.run(circuit)
+
+# Step 4: Execution
+job = backend.run(transpiled, **config.run_options)
+result = job.result()
+counts = result.get_counts()</code></pre>
+<h5 id="qace.execution._aer.AerExecutor--understanding-executionconfig-fields-for-aerexecutor">Understanding <code>ExecutionConfig</code> fields for <code>AerExecutor</code><a class="headerlink" href="#qace.execution._aer.AerExecutor--understanding-executionconfig-fields-for-aerexecutor" title="Permanent link">¶</a></h5>
+<p><strong><code>backend_options</code></strong> — passed to the <code>AerSimulator(...)</code> constructor:</p>
+<p>These configure the simulator instance itself (simulation method,
+device, precision, noise model, etc.). They are set once at
+construction time and persist across all <code>execute()</code> calls.</p>
+<p>Common examples:</p>
+<pre class="highlight"><code class="language-python">backend_options = {
+    "method": "statevector",       # simulation method (see AerSimulator.available_methods())
+    "device": "CPU",               # or "GPU" (see AerSimulator.available_devices())
+    "precision": "double",         # or "single" (halves memory usage)
+    "noise_model": noise_model,    # a qiskit_aer.noise.NoiseModel instance
+    "seed_simulator": 42,          # global seed for reproducible results
+    "max_parallel_threads": 0,     # 0 = use all available CPU cores
+}</code></pre>
+<p>Full list: see <code>AerSimulator</code> constructor parameters and the
+"Additional Backend Options" section in the <a href="https://qiskit.github.io/qiskit-aer/stubs/qiskit_aer.AerSimulator.html">Qiskit Aer documentation</a>.</p>
+<p><strong><code>run_options</code></strong> — passed to <code>AerSimulator.run(circuit, ...)</code> as kwargs:</p>
+<p>These are per-execution options that control how the compiled circuit
+is actually run (e.g. number of shots, memory output). They can
+override backend-level defaults for that specific run.</p>
+<p>Common examples:</p>
+<pre class="highlight"><code class="language-python">run_options = {
+    "shots": 1024,            # number of measurement samples
+    "seed_simulator": 42,     # per-run seed (overrides backend-level seed)
+    "memory": True,           # return per-shot measurement results
+}</code></pre>
+<p>Full list: see <code>AerSimulator.run()</code> <a href="https://qiskit.github.io/qiskit-aer/stubs/qiskit_aer.AerSimulator.html">documentation</a>. Any kwarg
+accepted by <code>run()</code> can be specified here.</p>
+<p><strong><code>transpiler_options</code></strong> — passed to
+<code>qiskit.generate_preset_pass_manager(...)</code> as kwargs:</p>
+<p>These control how the quantum circuit is compiled/optimized before
+execution. The <code>backend</code> kwarg is automatically set to the
+constructed <code>AerSimulator</code> instance; do NOT include it manually.
+The pass manager is built once during <code>__init__</code> and reused for
+every <code>execute()</code> call.</p>
+<p>The following defaults are applied if not explicitly provided:</p>
+<pre class="highlight"><code class="language-python">transpiler_options = {
+    "optimization_level": 0,             # minimal optimization
+    "layout_method": "trivial",          # identity qubit mapping
+    "routing_method": "basic",           # simple swap insertion
+    "translation_method": "translator",  # basis gate translation
+}</code></pre>
+<p>Common examples for overriding:</p>
+<pre class="highlight"><code class="language-python">transpiler_options = {
+    "optimization_level": 2,   # 0-3, higher = more optimization
+    "seed_transpiler": 42,     # for reproducible transpilation
+    "coupling_map": None,      # override backend coupling map
+}</code></pre>
+<p>Full list: see the <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit/qiskit.transpiler.generate_preset_pass_manager">documentation</a>
+of <code>qiskit.generate_preset_pass_manager()</code>.</p>
+<h5 id="qace.execution._aer.AerExecutor--example-usage">Example usage<a class="headerlink" href="#qace.execution._aer.AerExecutor--example-usage" title="Permanent link">¶</a></h5>
+<pre class="highlight"><code class="language-python">from qace.execution import AerExecutor, ExecutionConfig
+
+config = ExecutionConfig(
+    backend_options={"method": "statevector", "seed_simulator": 42},
+    run_options={"shots": 2048},
+    transpiler_options={"optimization_level": 1, "seed_transpiler": 42},
+)
+executor = AerExecutor(config)
+result = executor.execute(circuit)
+print(result.counts)</code></pre>
+
+        <p>Initializes the executor with the given configuration.</p>
+<p>Constructs both the <code>AerSimulator</code> backend and the preset pass
+manager at construction time so they can be reused across multiple
+<code>execute()</code> calls:</p>
+<pre class="highlight"><code class="language-python">self._backend = AerSimulator(**config.backend_options)
+self._passmanager = generate_preset_pass_manager(
+    backend=self._backend, **config.transpiler_options
+)</code></pre>
+<p>The pass manager is configured with the following defaults if not
+explicitly specified in <code>config.transpiler_options</code>:</p>
+<ul>
+<li><code>optimization_level</code>: 0</li>
+<li><code>layout_method</code>: "trivial"</li>
+<li><code>routing_method</code>: "basic"</li>
+<li><code>translation_method</code>: "translator"</li>
+</ul>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>config</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="ExecutionConfig(run_options=dict(), transpiler_options=dict(), backend_options=dict(), skip_transpilation=False)
+
+  
+      dataclass
+   (qace.execution._base.ExecutionConfig)" href="../base/#qace.execution._base.ExecutionConfig">ExecutionConfig</a> | None</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Optional execution configuration. Defaults to a
+standard ExecutionConfig if not provided.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="RuntimeError">RuntimeError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If the pass manager cannot be set up with the
+provided transpiler options.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/execution/_aer.py</code></summary>
+                    <pre class="highlight"><code class="language-python">def __init__(self, config: ExecutionConfig | None = None):
+    """Initializes the executor with the given configuration.
+
+    Constructs both the ``AerSimulator`` backend and the preset pass
+    manager at construction time so they can be reused across multiple
+    ``execute()`` calls:
+
+    ```python
+    self._backend = AerSimulator(**config.backend_options)
+    self._passmanager = generate_preset_pass_manager(
+        backend=self._backend, **config.transpiler_options
+    )
+    ```
+
+    The pass manager is configured with the following defaults if not
+    explicitly specified in ``config.transpiler_options``:
+
+    - ``optimization_level``: 0
+    - ``layout_method``: "trivial"
+    - ``routing_method``: "basic"
+    - ``translation_method``: "translator"
+
+    Args:
+        config: Optional execution configuration. Defaults to a
+            standard ExecutionConfig if not provided.
+
+    Raises:
+        RuntimeError: If the pass manager cannot be set up with the
+            provided transpiler options.
+    """
+    super().__init__()
+    self.config = copy.deepcopy(config) or ExecutionConfig()
+    self._backend = self._build_backend()
+
+    # setup pass manager for circuit transpilation
+    self.config.transpiler_options["backend"] = self._backend
+    self.config.transpiler_options.setdefault("optimization_level", 0)
+    self.config.transpiler_options.setdefault("layout_method", "trivial")
+    self.config.transpiler_options.setdefault("routing_method", "basic")
+    self.config.transpiler_options.setdefault("translation_method", "translator")
+    try:
+        self._passmanager = generate_preset_pass_manager(
+            **self.config.transpiler_options,
+        )
+    except Exception as e:
+        raise RuntimeError(
+            f"Failed to set up pass manager with options "
+            f"{self.config.transpiler_options}: {e}"
+        ) from e</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.execution._aer.AerExecutor.execute" class="doc doc-heading">
+            <code class="highlight language-python">execute(circuit, simulator_seed=None)</code>
+
+<a href="#qace.execution._aer.AerExecutor.execute" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Transpiles and executes a quantum circuit on the Aer backend.</p>
+<p>Uses the pass manager and backend that were constructed during
+<code>__init__</code>. Internally performs:</p>
+<pre class="highlight"><code class="language-python"># 1) Transpile via the pre-built pass manager
+transpiled = self._passmanager.run(circuit)
+
+# 2) Run on the pre-built backend
+job = self._backend.run(transpiled, **self.config.run_options)
+result = job.result()
+counts = result.get_counts()</code></pre>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>circuit</code></b>
+                  (<code><span title="qiskit.QuantumCircuit">QuantumCircuit</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The quantum circuit to execute.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>simulator_seed</code></b>
+                  (<code><span title="int">int</span> | None</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>If not None, overrides <code>seed_simulator</code> in
+<code>run_options</code> for this single execution only.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="ExecutionResult(counts, result, metadata)
+
+  
+      dataclass
+   (qace.execution._base.ExecutionResult)" href="../base/#qace.execution._base.ExecutionResult">ExecutionResult</a></code>
+              –
+              <div class="doc-md-description">
+                <p>An ExecutionResult containing measurement counts, the raw result</p>
+              </div>
+            </li>
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="ExecutionResult(counts, result, metadata)
+
+  
+      dataclass
+   (qace.execution._base.ExecutionResult)" href="../base/#qace.execution._base.ExecutionResult">ExecutionResult</a></code>
+              –
+              <div class="doc-md-description">
+                <p>object, and metadata describing transpiled circuit depth, gate</p>
+              </div>
+            </li>
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="ExecutionResult(counts, result, metadata)
+
+  
+      dataclass
+   (qace.execution._base.ExecutionResult)" href="../base/#qace.execution._base.ExecutionResult">ExecutionResult</a></code>
+              –
+              <div class="doc-md-description">
+                <p>count, and timing information for transpilation and execution.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="RuntimeError">RuntimeError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If transpilation of the circuit fails or if
+execution on the backend fails.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/execution/_aer.py</code></summary>
+              <pre class="highlight"><code class="language-python">def execute(
+    self, circuit: QuantumCircuit, simulator_seed: int | None = None
+) -&gt; ExecutionResult:
+    """Transpiles and executes a quantum circuit on the Aer backend.
+
+    Uses the pass manager and backend that were constructed during
+    ``__init__``. Internally performs:
+
+    ```python
+    # 1) Transpile via the pre-built pass manager
+    transpiled = self._passmanager.run(circuit)
+
+    # 2) Run on the pre-built backend
+    job = self._backend.run(transpiled, **self.config.run_options)
+    result = job.result()
+    counts = result.get_counts()
+    ```
+
+    Args:
+        circuit: The quantum circuit to execute.
+        simulator_seed: If not None, overrides ``seed_simulator`` in
+            ``run_options`` for this single execution only.
+
+    Returns:
+        An ExecutionResult containing measurement counts, the raw result
+        object, and metadata describing transpiled circuit depth, gate
+        count, and timing information for transpilation and execution.
+
+    Raises:
+        RuntimeError: If transpilation of the circuit fails or if
+            execution on the backend fails.
+    """
+    # 1) Transpilation
+    if self.config.skip_transpilation:
+        transpiled = circuit
+        transpile_time = 0.0
+    else:
+        try:
+            start_transpile = time.perf_counter()
+            transpiled = self._passmanager.run(circuit)
+            transpile_time = time.perf_counter() - start_transpile
+        except Exception as e:
+            raise RuntimeError(
+                f"Failed to transpile circuit with options "
+                f"{self.config.transpiler_options}: {e}"
+            ) from e
+
+    # 2) Execution
+    run_options = self.config.run_options.copy()
+    if simulator_seed is not None:
+        run_options["seed_simulator"] = simulator_seed
+
+    start_execution = time.perf_counter()
+    try:
+        job = self._backend.run(transpiled, **run_options)
+        result = job.result()
+    except Exception as e:
+        raise RuntimeError(
+            f"Failed to execute circuit on backend "
+            f"'{getattr(self._backend, 'name', 'unknown')}': {e}"
+        ) from e
+    execution_time = time.perf_counter() - start_execution
+
+    # 3) Setup result
+    counts = result.get_counts()
+    return ExecutionResult(
+        counts=counts,
+        result=result,
+        metadata={
+            "transpiled_depth": transpiled.depth(),
+            "transpiled_gate_count": transpiled.size(),
+            "transpile_time_s": transpile_time,
+            "execution_time_s": execution_time,
+            "total_time_s": transpile_time + execution_time,
+        },
+    )</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.execution._aer.AerExecutor.default" class="doc doc-heading">
+            <code class="highlight language-python">default(seeded=False)</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
+  </span>
+
+<a href="#qace.execution._aer.AerExecutor.default" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Creates an AerExecutor with default configuration.</p>
+<p>Selects the GPU device if available, otherwise falls back to the
+CPU, and configures the executor for single-shot execution with
+transpilation skipped.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>seeded</code></b>
+                  (<code><span title="bool">bool</span></code>, default:
+                      <code>False</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>If True, seeds the simulator with a random value derived
+from the operating system's entropy source, so that repeated
+measurements of the same circuit always yield identical
+results. If False (the default), the simulator is left
+unseeded, so repeated measurements of the same circuit may
+yield different results.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="AerExecutor(config=None) (qace.execution._aer.AerExecutor)" href="#qace.execution._aer.AerExecutor">AerExecutor</a></code>
+              –
+              <div class="doc-md-description">
+                <p>An AerExecutor configured with the default execution settings.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/execution/_aer.py</code></summary>
+              <pre class="highlight"><code class="language-python">@staticmethod
+def default(seeded: bool = False) -&gt; AerExecutor:
+    """Creates an AerExecutor with default configuration.
+
+    Selects the GPU device if available, otherwise falls back to the
+    CPU, and configures the executor for single-shot execution with
+    transpilation skipped.
+
+    Args:
+        seeded: If True, seeds the simulator with a random value derived
+            from the operating system's entropy source, so that repeated
+            measurements of the same circuit always yield identical
+            results. If False (the default), the simulator is left
+            unseeded, so repeated measurements of the same circuit may
+            yield different results.
+
+    Returns:
+        An AerExecutor configured with the default execution settings.
+    """
+    device = "GPU" if "GPU" in AerSimulator().available_devices() else "CPU"
+    b_options = {"device": device}
+    if seeded:
+        b_options["seed_simulator"] = int.from_bytes(os.urandom(4))
+    executor = AerExecutor(
+        ExecutionConfig(
+            backend_options=b_options,
+            run_options={"shots": 1},
+            skip_transpilation=True,
+        )
+    )
+    return executor</code></pre>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.execution._aer.AerBackendV2Executor" class="doc doc-heading">
+              <code class="highlight language-python">AerBackendV2Executor(config=None)</code>
+
+<a href="#qace.execution._aer.AerBackendV2Executor" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="AerExecutor(config=None) (qace.execution._aer.AerExecutor)" href="#qace.execution._aer.AerExecutor">AerExecutor</a></code></p>
+
+
+
+        <p>An Aer executor that simulates a specific <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit/qiskit.providers.BackendV2">BackendV2</a> device.</p>
+<p>Constructs an AerSimulator that mimics an IBM Quantum backend (or any
+<a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit/qiskit.providers.BackendV2">BackendV2</a>), including its noise model and coupling map. The setup is
+split between construction time and execution time:</p>
+<p>During <code>__init__</code>:</p>
+<pre class="highlight"><code class="language-python"># Step 1: Backend construction
+real_backend = config.backend_options["backend"]  # a BackendV2 instance
+other_opts = {k: v for k, v in config.backend_options.items() if k != "backend"}
+backend = AerSimulator.from_backend(real_backend, **other_opts)
+
+# Step 2: Pass manager construction
+pass_manager = generate_preset_pass_manager(
+    backend=backend, **config.transpiler_options
+)</code></pre>
+<p>During each <code>execute()</code> call:</p>
+<pre class="highlight"><code class="language-python"># Step 3: Transpilation
+transpiled = pass_manager.run(circuit)
+
+# Step 4: Execution
+job = backend.run(transpiled, **config.run_options)
+result = job.result()
+counts = result.get_counts()</code></pre>
+<p>Understanding <code>ExecutionConfig</code> fields for <code>AerBackendV2Executor</code>:</p>
+<p><code>backend_options</code>:
+    Must contain a <code>"backend"</code> key with a <code>BackendV2</code> instance.
+    All other entries are passed as extra kwargs to
+    <code>AerSimulator.from_backend()</code>.</p>
+<pre class="highlight"><code>```python
+backend_options = {
+    "backend": FakeManilaV2(),   # REQUIRED: BackendV2 to simulate
+    "seed_simulator": 42,        # optional: additional AerSimulator options
+}
+```</code></pre>
+<p><code>run_options</code>:
+    Same as <code>AerExecutor</code> — passed to <code>backend.run(circuit, ...)</code>.</p>
+<pre class="highlight"><code>```python
+run_options = {
+    "shots": 4096,
+    "seed_simulator": 42,
+    "memory": True,
+}
+```</code></pre>
+<p><code>transpiler_options</code>:
+    Same as <code>AerExecutor</code> — passed to
+    <code>qiskit.generate_preset_pass_manager(...)</code>. The following
+    defaults are applied if not explicitly provided:</p>
+<pre class="highlight"><code>- ``optimization_level``: 0
+- ``layout_method``: "trivial"
+- ``routing_method``: "basic"
+- ``translation_method``: "translator"
+
+```python
+transpiler_options = {
+    "optimization_level": 2,
+    "seed_transpiler": 42,
+}
+```</code></pre>
+<p>Example usage:</p>
+<pre class="highlight"><code class="language-python">from qiskit_ibm_runtime.fake_provider import FakeManilaV2
+from qace.execution import AerBackendV2Executor, ExecutionConfig
+
+config = ExecutionConfig(
+    backend_options={"backend": FakeManilaV2(), "seed_simulator": 42},
+    run_options={"shots": 4096},
+    transpiler_options={"optimization_level": 2},
+)
+executor = AerBackendV2Executor(config)
+result = executor.execute(circuit)
+print(result.counts)</code></pre>
+
+        <p>Initializes the executor with a <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit/qiskit.providers.BackendV2">BackendV2</a> target from the config.</p>
+<p>Internally constructs the simulator and pass manager during
+construction via the parent class:</p>
+<pre class="highlight"><code class="language-python">AerSimulator.from_backend(
+    config.backend_options["backend"],
+    **{k: v for k, v in config.backend_options.items() if k != "backend"}
+)</code></pre>
+<p>The pass manager is configured with the following defaults if not
+explicitly specified in <code>config.transpiler_options</code>:</p>
+<ul>
+<li><code>optimization_level</code>: 0</li>
+<li><code>layout_method</code>: "trivial"</li>
+<li><code>routing_method</code>: "basic"</li>
+<li><code>translation_method</code>: "translator"</li>
+</ul>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>config</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="ExecutionConfig(run_options=dict(), transpiler_options=dict(), backend_options=dict(), skip_transpilation=False)
+
+  
+      dataclass
+   (qace.execution._base.ExecutionConfig)" href="../base/#qace.execution._base.ExecutionConfig">ExecutionConfig</a> | None</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Optional execution configuration. Must include a
+'backend' entry in backend_options.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="RuntimeError">RuntimeError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If 'backend' is missing from backend_options
+or is not a <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit/qiskit.providers.BackendV2">BackendV2</a> instance.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/execution/_aer.py</code></summary>
+                    <pre class="highlight"><code class="language-python">def __init__(self, config: ExecutionConfig | None = None):
+    """Initializes the executor with a [BackendV2](https://quantum.cloud.ibm.com/docs/en/api/qiskit/qiskit.providers.BackendV2) target from the config.
+
+    Internally constructs the simulator and pass manager during
+    construction via the parent class:
+
+    ```python
+    AerSimulator.from_backend(
+        config.backend_options["backend"],
+        **{k: v for k, v in config.backend_options.items() if k != "backend"}
+    )
+    ```
+
+    The pass manager is configured with the following defaults if not
+    explicitly specified in ``config.transpiler_options``:
+
+    - ``optimization_level``: 0
+    - ``layout_method``: "trivial"
+    - ``routing_method``: "basic"
+    - ``translation_method``: "translator"
+
+    Args:
+        config: Optional execution configuration. Must include a
+            'backend' entry in backend_options.
+
+    Raises:
+        RuntimeError: If 'backend' is missing from backend_options
+            or is not a [BackendV2](https://quantum.cloud.ibm.com/docs/en/api/qiskit/qiskit.providers.BackendV2) instance.
+    """
+    executor_config = config or ExecutionConfig()
+
+    backend = executor_config.backend_options.get("backend", None)
+
+    if backend is None:
+        raise RuntimeError(
+            "backend_options must contain a 'backend' key with a BackendV2 to simulate."
+        )
+    elif not isinstance(backend, BackendV2):
+        raise RuntimeError(
+            f"backend_options['backend'] must be a BackendV2 instance, "
+            f"got {type(backend).__name__}."
+        )
+
+    super().__init__(executor_config)</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../base/" class="btn btn-neutral float-left" title="Base"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ibm_runtime/" class="btn btn-neutral float-right" title="IBM Runtime Executor">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Fraunhofer-AISEC/qace-sdk" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../base/" style="color: #fcfcfc">« Previous</a></span>
+    
+    
+      <span><a href="../ibm_runtime/" style="color: #fcfcfc">Next »</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body></html>

@@ -1,0 +1,556 @@
+<!DOCTYPE html><html class="writer-html5" lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>Iterative Executor - QACE SDK</title>
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="../../css/theme_extra.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet">
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Iterative Executor";
+        var mkdocs_page_input_path = "execution/iterative.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QACE SDK
+        </a><div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here">
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current">Execution Layer</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../base/">Base</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../aer/">Aer Executor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ibm_runtime/">IBM Runtime Executor</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Iterative Executor</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#qace.execution._iterative">_iterative</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.execution._iterative.IterativeExecutor">IterativeExecutor</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal">Algorithm Layer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/base/">Base</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/cea/">Correlation Extraction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/sith/">Stochastic Identification via Thresholding</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/preimage/">Preimage</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal">Vectorial Boolean Function (VBF) Layer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/vbf/">VBF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/random_vbf/">Random</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/lookup_table/">Lookup Table</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/rijndael_s_box/">Rijndael_s_box</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/xor_cipher/">XOR-Cipher</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/biased_rs/">Biased Function RS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/binary/">Binary</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/circuit_conventions/">Circuit Conventions</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QACE SDK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+          <li class="breadcrumb-item">Execution Layer</li>
+      <li class="breadcrumb-item active">Iterative Executor</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Fraunhofer-AISEC/qace-sdk/edit/master/docs/execution/iterative.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <!--
+Copyright 2026 Fraunhofer AISEC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+--><h1 id="iterative-executor">Iterative Executor<a class="headerlink" href="#iterative-executor" title="Permanent link">¶</a></h1>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="qace.execution._iterative" class="doc doc-heading">
+            <code>qace.execution._iterative</code>
+
+
+<a href="#qace.execution._iterative" class="headerlink" title="Permanent link">¶</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Iterative executor wrapper for reproducible multi-call algorithms.</p>
+<p>Provides a generic wrapper that auto-increments the simulator seed on each
+execute() call, using the _simulator_seed_override mechanism in CircuitExecutor.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.execution._iterative.IterativeExecutor" class="doc doc-heading">
+              <code class="highlight language-python">IterativeExecutor(inner, base_seed=0)</code>
+
+<a href="#qace.execution._iterative.IterativeExecutor" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="CircuitExecutor() (qace.execution._base.CircuitExecutor)" href="../base/#qace.execution._base.CircuitExecutor">CircuitExecutor</a></code></p>
+
+
+
+        <p>Generic wrapper that makes any CircuitExecutor iteratively-seeded.</p>
+<p>Before each call to the inner executor, sets its _simulator_seed_override
+to base_seed + call_count. The inner executor's execute() then passes
+that seed to its _execute() method.</p>
+
+
+<details class="usage" open="">
+  <summary>Usage</summary>
+  <pre class="highlight"><code class="language-python">from qace.execution import AerExecutor, ExecutionConfig, IterativeExecutor
+config = ExecutionConfig(run_options={"shots": 1})
+executor = IterativeExecutor(AerExecutor(config), base_seed=42)
+r1 = executor.execute(circuit)  # inner sees simulator_seed=42
+r2 = executor.execute(circuit)  # inner sees simulator_seed=43
+executor.reset()
+r3 = executor.execute(circuit)  # inner sees simulator_seed=42 again</code></pre>
+</details>
+        <p>Initializes the iterative wrapper.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>inner</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="CircuitExecutor() (qace.execution._base.CircuitExecutor)" href="../base/#qace.execution._base.CircuitExecutor">CircuitExecutor</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The executor to wrap.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>base_seed</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>0</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Starting seed value. Each execute() call uses
+base_seed + call_count as the simulator seed.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/execution/_iterative.py</code></summary>
+                    <pre class="highlight"><code class="language-python">def __init__(self, inner: CircuitExecutor, base_seed: int = 0) -&gt; None:
+    """Initializes the iterative wrapper.
+
+    Args:
+        inner: The executor to wrap.
+        base_seed: Starting seed value. Each execute() call uses
+            base_seed + call_count as the simulator seed.
+    """
+    super().__init__()
+    self._inner = inner
+    self._base_seed = base_seed
+    self._call_count = 0</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="qace.execution._iterative.IterativeExecutor.inner" class="doc doc-heading">
+            <code class="highlight language-python">inner</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#qace.execution._iterative.IterativeExecutor.inner" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The wrapped executor instance.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="qace.execution._iterative.IterativeExecutor.base_seed" class="doc doc-heading">
+            <code class="highlight language-python">base_seed</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#qace.execution._iterative.IterativeExecutor.base_seed" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The base seed value.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="qace.execution._iterative.IterativeExecutor.call_count" class="doc doc-heading">
+            <code class="highlight language-python">call_count</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#qace.execution._iterative.IterativeExecutor.call_count" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Number of execute() calls since creation or last reset.</p>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.execution._iterative.IterativeExecutor.execute" class="doc doc-heading">
+            <code class="highlight language-python">execute(circuit, simulator_seed=None)</code>
+
+<a href="#qace.execution._iterative.IterativeExecutor.execute" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Executes with auto-incrementing seed on the inner executor.</p>
+<p>Computes seed = base_seed + call_count and injects it into the
+inner executor via simulator_seed via the execute() method.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>circuit</code></b>
+                  (<code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The quantum circuit to execute.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>simulator_seed</code></b>
+                  (<code><span title="int">int</span> | None</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Ignored (seed is computed internally).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="ExecutionResult(counts, result, metadata)
+
+  
+      dataclass
+   (qace.execution._base.ExecutionResult)" href="../base/#qace.execution._base.ExecutionResult">ExecutionResult</a></code>
+              –
+              <div class="doc-md-description">
+                <p>An ExecutionResult from the wrapped executor.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/execution/_iterative.py</code></summary>
+              <pre class="highlight"><code class="language-python">def execute(
+    self, circuit: QuantumCircuit, simulator_seed: int | None = None
+) -&gt; ExecutionResult:
+    """Executes with auto-incrementing seed on the inner executor.
+
+    Computes seed = base_seed + call_count and injects it into the
+    inner executor via simulator_seed via the execute() method.
+
+    Args:
+        circuit: The quantum circuit to execute.
+        simulator_seed: Ignored (seed is computed internally).
+
+    Returns:
+        An ExecutionResult from the wrapped executor.
+    """
+    current_seed = self._base_seed + self._call_count
+    self._call_count += 1
+
+    return self._inner.execute(circuit, simulator_seed=current_seed)</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.execution._iterative.IterativeExecutor.reset" class="doc doc-heading">
+            <code class="highlight language-python">reset()</code>
+
+<a href="#qace.execution._iterative.IterativeExecutor.reset" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Resets the call counter to 0 for reproducible re-runs.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/execution/_iterative.py</code></summary>
+              <pre class="highlight"><code class="language-python">def reset(self) -&gt; None:
+    """Resets the call counter to 0 for reproducible re-runs."""
+    self._call_count = 0</code></pre>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ibm_runtime/" class="btn btn-neutral float-left" title="IBM Runtime Executor"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../algorithm/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Fraunhofer-AISEC/qace-sdk" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../ibm_runtime/" style="color: #fcfcfc">« Previous</a></span>
+    
+    
+      <span><a href="../../algorithm/" style="color: #fcfcfc">Next »</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body></html>

@@ -1,0 +1,582 @@
+<!DOCTYPE html><html class="writer-html5" lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>Circuit Conventions - QACE SDK</title>
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="../../css/theme_extra.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet">
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Circuit Conventions";
+        var mkdocs_page_input_path = "vbf/circuit_conventions.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QACE SDK
+        </a><div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here">
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal">Execution Layer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/base/">Base</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/aer/">Aer Executor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/ibm_runtime/">IBM Runtime Executor</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../execution/iterative/">Iterative Executor</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal">Algorithm Layer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/base/">Base</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/cea/">Correlation Extraction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/sith/">Stochastic Identification via Thresholding</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/preimage/">Preimage</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current">Vectorial Boolean Function (VBF) Layer</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../vbf/">VBF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../random_vbf/">Random</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../lookup_table/">Lookup Table</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../rijndael_s_box/">Rijndael_s_box</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../xor_cipher/">XOR-Cipher</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../biased_rs/">Biased Function RS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../binary/">Binary</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Circuit Conventions</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#qace.vbf._circuit_conventions">_circuit_conventions</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf._circuit_conventions.mcx_msb0">mcx_msb0</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf._circuit_conventions.measure_msb0">measure_msb0</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.vbf._circuit_conventions.measure_all_msb0">measure_all_msb0</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QACE SDK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+          <li class="breadcrumb-item">Vectorial Boolean Function (VBF) Layer</li>
+      <li class="breadcrumb-item active">Circuit Conventions</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Fraunhofer-AISEC/qace-sdk/edit/master/docs/vbf/circuit_conventions.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <!--
+Copyright 2026 Fraunhofer AISEC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+--><h1 id="circuit-conventions">Circuit Conventions<a class="headerlink" href="#circuit-conventions" title="Permanent link">¶</a></h1>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="qace.vbf._circuit_conventions" class="doc doc-heading">
+            <code>qace.vbf._circuit_conventions</code>
+
+
+<a href="#qace.vbf._circuit_conventions" class="headerlink" title="Permanent link">¶</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Circuit utilities enforcing the project-wide MSB₀ qubit convention.</p>
+<p>Throughout this project, qubit index 0 represents the most significant bit.
+Qiskit natively uses LSB₀ (qubit index 0 = least significant bit).
+These helpers translate between the two conventions automatically.</p>
+<p>WARNING: Do not use bare <code>circuit.mcx(..., ctrl_state=...)</code> calls elsewhere
+in the codebase. Always use <code>mcx_msb0()</code> to avoid bit-ordering bugs.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="qace.vbf._circuit_conventions.mcx_msb0" class="doc doc-heading">
+            <code class="highlight language-python">mcx_msb0(circuit, control_qubits, target_qubit, ctrl_state=None)</code>
+
+<a href="#qace.vbf._circuit_conventions.mcx_msb0" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Multi-controlled X gate using MSB₀ convention (qubit index 0 = MSB).</p>
+<p>Translates from the project's MSB₀ convention to Qiskit's internal
+LSB₀ convention automatically.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>circuit</code></b>
+                  (<code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The quantum circuit to append the gate to.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>control_qubits</code></b>
+                  (<code><span title="collections.abc.Sequence">Sequence</span>[<span title="qiskit.circuit.quantumcircuit.QubitSpecifier">QubitSpecifier</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>Control qubit indices in MSB₀ order.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>target_qubit</code></b>
+                  (<code><span title="qiskit.circuit.quantumcircuit.QubitSpecifier">QubitSpecifier</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Target qubit index.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>ctrl_state</code></b>
+                  (<code><span title="str">str</span> | <span title="int">int</span> | None</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Value with MSB₀ order of the control state to trigger on.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_circuit_conventions.py</code></summary>
+              <pre class="highlight"><code class="language-python">def mcx_msb0(
+    circuit: QuantumCircuit,
+    control_qubits: Sequence[QubitSpecifier],
+    target_qubit: QubitSpecifier,
+    ctrl_state: str | int | None = None,
+):
+    """Multi-controlled X gate using MSB₀ convention (qubit index 0 = MSB).
+
+    Translates from the project's MSB₀ convention to Qiskit's internal
+    LSB₀ convention automatically.
+
+    Args:
+        circuit: The quantum circuit to append the gate to.
+        control_qubits: Control qubit indices in MSB₀ order.
+        target_qubit: Target qubit index.
+        ctrl_state: Value with MSB₀ order of the control state to trigger on.
+    """
+    circuit.mcx(
+        control_qubits[::-1],
+        target_qubit,
+        ctrl_state=ctrl_state,
+    )</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="qace.vbf._circuit_conventions.measure_msb0" class="doc doc-heading">
+            <code class="highlight language-python">measure_msb0(circuit, qubits, clbits)</code>
+
+<a href="#qace.vbf._circuit_conventions.measure_msb0" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Measurement using MSB₀ convention (qubit 0 maps to the most significant classical bit).</p>
+<p>Wraps Qiskit's <code>measure</code> but ensures that qubit index 0 maps to
+the most significant bit in the resulting bitstring.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>circuit</code></b>
+                  (<code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The quantum circuit to append measurements to.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>qubits</code></b>
+                  (<code><span title="qiskit.circuit.quantumcircuit.QubitSpecifier">QubitSpecifier</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Qubit indices to measure (in MSB₀ order).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>clbits</code></b>
+                  (<code><span title="qiskit.circuit.quantumcircuit.ClbitSpecifier">ClbitSpecifier</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Classical bit indices to store results.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_circuit_conventions.py</code></summary>
+              <pre class="highlight"><code class="language-python">def measure_msb0(
+    circuit: QuantumCircuit, qubits: QubitSpecifier, clbits: ClbitSpecifier
+):
+    """Measurement using MSB₀ convention (qubit 0 maps to the most significant classical bit).
+
+    Wraps Qiskit's `measure` but ensures that qubit index 0 maps to
+    the most significant bit in the resulting bitstring.
+
+    Args:
+        circuit: The quantum circuit to append measurements to.
+        qubits: Qubit indices to measure (in MSB₀ order).
+        clbits: Classical bit indices to store results.
+    """
+    circuit.measure(qubits[::-1], clbits)</code></pre>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="qace.vbf._circuit_conventions.measure_all_msb0" class="doc doc-heading">
+            <code class="highlight language-python">measure_all_msb0(circuit, inplace=True, add_bits=True)</code>
+
+<a href="#qace.vbf._circuit_conventions.measure_all_msb0" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Measures all qubits using MSB₀ convention (qubit 0 → most significant classical bit).</p>
+<p>Wraps Qiskit's <code>measure_all()</code> but ensures that qubit index 0 maps to
+the most significant bit in the resulting bitstring.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>circuit</code></b>
+                  (<code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The quantum circuit to append measurements to.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>inplace</code></b>
+                  (<code><span title="bool">bool</span></code>, default:
+                      <code>True</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>If True, adds measurements to the existing circuit.
+If False, returns a new circuit with measurements.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>add_bits</code></b>
+                  (<code><span title="bool">bool</span></code>, default:
+                      <code>True</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>If True, adds new classical bits in a ClassicalRegister
+to store the measurements. If False, stores results in
+already existing classical bits (qubit n → classical bit
+(num_qubits - 1 - n) to maintain MSB₀ ordering).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="qiskit.circuit.QuantumCircuit">QuantumCircuit</span> | None</code>
+              –
+              <div class="doc-md-description">
+                <p>None if inplace=True, otherwise a new circuit with measurements.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="CircuitError">CircuitError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If add_bits=False but there are not enough classical bits.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/vbf/_circuit_conventions.py</code></summary>
+              <pre class="highlight"><code class="language-python">def measure_all_msb0(
+    circuit: QuantumCircuit,
+    inplace: bool = True,
+    add_bits: bool = True,
+) -&gt; QuantumCircuit | None:
+    """Measures all qubits using MSB₀ convention (qubit 0 → most significant classical bit).
+
+    Wraps Qiskit's `measure_all()` but ensures that qubit index 0 maps to
+    the most significant bit in the resulting bitstring.
+
+    Args:
+        circuit: The quantum circuit to append measurements to.
+        inplace: If True, adds measurements to the existing circuit.
+            If False, returns a new circuit with measurements.
+        add_bits: If True, adds new classical bits in a ClassicalRegister
+            to store the measurements. If False, stores results in
+            already existing classical bits (qubit n → classical bit
+            (num_qubits - 1 - n) to maintain MSB₀ ordering).
+
+    Returns:
+        None if inplace=True, otherwise a new circuit with measurements.
+
+    Raises:
+        CircuitError: If add_bits=False but there are not enough classical bits.
+    """
+    n = circuit.num_qubits
+
+    if not inplace:
+        circuit = circuit.copy()
+
+    if add_bits:
+        circuit.add_register(ClassicalRegister(n))
+
+    circuit.measure(range(n)[::-1], range(n))
+
+    if not inplace:
+        return circuit
+    else:
+        return None</code></pre>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../binary/" class="btn btn-neutral float-left" title="Binary"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Fraunhofer-AISEC/qace-sdk" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../binary/" style="color: #fcfcfc">« Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body></html>

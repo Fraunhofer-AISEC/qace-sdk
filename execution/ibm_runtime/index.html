@@ -1,0 +1,823 @@
+<!DOCTYPE html><html class="writer-html5" lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>IBM Runtime Executor - QACE SDK</title>
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="../../css/theme_extra.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet">
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "IBM Runtime Executor";
+        var mkdocs_page_input_path = "execution/ibm_runtime.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QACE SDK
+        </a><div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here">
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current">Execution Layer</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../base/">Base</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../aer/">Aer Executor</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">IBM Runtime Executor</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#qace.execution._ibm_runtime">_ibm_runtime</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.execution._ibm_runtime.IBMRuntimeExecutionConfig">IBMRuntimeExecutionConfig</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qace.execution._ibm_runtime.IBMRuntimeExecutor">IBMRuntimeExecutor</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../iterative/">Iterative Executor</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal">Algorithm Layer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/base/">Base</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/cea/">Correlation Extraction</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/sith/">Stochastic Identification via Thresholding</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../algorithm/preimage/">Preimage</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal">Vectorial Boolean Function (VBF) Layer</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/vbf/">VBF</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/random_vbf/">Random</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/lookup_table/">Lookup Table</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/rijndael_s_box/">Rijndael_s_box</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/xor_cipher/">XOR-Cipher</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/biased_rs/">Biased Function RS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/binary/">Binary</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vbf/circuit_conventions/">Circuit Conventions</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QACE SDK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+          <li class="breadcrumb-item">Execution Layer</li>
+      <li class="breadcrumb-item active">IBM Runtime Executor</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Fraunhofer-AISEC/qace-sdk/edit/master/docs/execution/ibm_runtime.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <!--
+Copyright 2026 Fraunhofer AISEC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+--><h1 id="ibm-runtime-executor">IBM Runtime Executor<a class="headerlink" href="#ibm-runtime-executor" title="Permanent link">¶</a></h1>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="qace.execution._ibm_runtime" class="doc doc-heading">
+            <code>qace.execution._ibm_runtime</code>
+
+
+<a href="#qace.execution._ibm_runtime" class="headerlink" title="Permanent link">¶</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>IBM Quantum Runtime circuit executor implementation.</p>
+<p>Provides an executor that leverages IBM Runtime's <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit-ibm-runtime/sampler-v2">SamplerV2</a> primitive
+for running quantum circuits on both local fake backends and real
+cloud backends.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.execution._ibm_runtime.IBMRuntimeExecutionConfig" class="doc doc-heading">
+              <code class="highlight language-python">IBMRuntimeExecutionConfig(run_options=dict(), transpiler_options=dict(), backend_options=dict(), skip_transpilation=False, sampler_options=dict())</code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+<a href="#qace.execution._ibm_runtime.IBMRuntimeExecutionConfig" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="ExecutionConfig(run_options=dict(), transpiler_options=dict(), backend_options=dict(), skip_transpilation=False)
+
+  
+      dataclass
+   (qace.execution._base.ExecutionConfig)" href="../base/#qace.execution._base.ExecutionConfig">ExecutionConfig</a></code></p>
+
+
+
+        <p>ExecutionConfig extended with <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit-ibm-runtime/sampler-v2">SamplerV2</a> options.</p>
+<p>Available options for the inherited fields can be found in the
+respective Qiskit documentation:</p>
+<ul>
+<li><code>run_options</code>: Supports <code>"shots"</code> (default 1024).</li>
+<li><code>transpiler_options</code>: See
+  <code>qiskit.generate_preset_pass_manager()</code>
+  <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit/qiskit.transpiler.generate_preset_pass_manager">documentation</a>.
+  Note that <code>"backend"</code> must not be included.</li>
+<li><code>backend_options</code>: Must contain a <code>"backend"</code> key with a
+  <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit/qiskit.providers.BackendV2">BackendV2</a> instance.</li>
+<li><code>sampler_options</code>: See <code>qiskit_ibm_runtime.SamplerV2.options</code>
+  <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit-ibm-runtime/options-sampler-options">documentation</a>.</li>
+</ul>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>sampler_options</code></b>
+                  (<code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>Options passed to the <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit-ibm-runtime/sampler-v2">SamplerV2</a> instance.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="qace.execution._ibm_runtime.IBMRuntimeExecutor" class="doc doc-heading">
+              <code class="highlight language-python">IBMRuntimeExecutor(config=None)</code>
+
+<a href="#qace.execution._ibm_runtime.IBMRuntimeExecutor" class="headerlink" title="Permanent link">¶</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="CircuitExecutor() (qace.execution._base.CircuitExecutor)" href="../base/#qace.execution._base.CircuitExecutor">CircuitExecutor</a></code></p>
+
+
+
+        <p>A circuit executor that uses the IBM Runtime <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit-ibm-runtime/sampler-v2">SamplerV2</a> primitive.</p>
+<p>This executor wraps the IBM Quantum Runtime sampling pipeline. It works
+identically with local fake backends (e.g. from <code>qiskit_ibm_runtime.fake_provider</code>)
+and real IBM Quantum cloud backends. The setup is split between
+construction time and execution time:</p>
+<p>During <code>__init__</code>:</p>
+<pre class="highlight"><code class="language-python"># Step 1: Backend extraction
+backend = config.backend_options["backend"]  # a BackendV2 instance
+
+# Step 2: Pass manager construction
+pass_manager = generate_preset_pass_manager(
+    backend=backend, **config.transpiler_options
+)
+
+# Step 3: Sampler construction
+sampler = SamplerV2(mode=backend)
+sampler.options.update(**config.sampler_options)</code></pre>
+<p>During each <code>execute()</code> call:</p>
+<pre class="highlight"><code class="language-python"># Step 4: Transpilation
+transpiled = pass_manager.run(circuit)
+
+# Step 5: Execution via SamplerV2
+shots = config.run_options.get("shots", 1024)
+job = sampler.run([transpiled], shots=shots)
+result = job.result()
+counts = result[0].data.&lt;creg&gt;.get_counts()</code></pre>
+<h5 id="qace.execution._ibm_runtime.IBMRuntimeExecutor--understanding-ibmruntimeexecutionconfig-fields-for-ibmruntimeexecutor">Understanding <code>IBMRuntimeExecutionConfig</code> fields for <code>IBMRuntimeExecutor</code><a class="headerlink" href="#qace.execution._ibm_runtime.IBMRuntimeExecutor--understanding-ibmruntimeexecutionconfig-fields-for-ibmruntimeexecutor" title="Permanent link">¶</a></h5>
+<p><strong><code>backend_options</code></strong> — must contain a <code>"backend"</code> key with a <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit/qiskit.providers.BackendV2">BackendV2</a> instance:</p>
+<p>The <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit/qiskit.providers.BackendV2">BackendV2</a> instance determines both the target device topology
+(coupling map, basis gates) used during transpilation and the noise
+model used during simulation (for fake backends). No additional keys
+are required, but the <code>"backend"</code> key is mandatory.</p>
+<pre class="highlight"><code class="language-python">backend_options = {
+    "backend": FakeManilaV2(),   # REQUIRED: any BackendV2 instance
+}</code></pre>
+<p>Full list of compatible backends: any class implementing the Qiskit
+<a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit/qiskit.providers.BackendV2">BackendV2</a> interface, including fake backends from
+<code>qiskit_ibm_runtime.fake_provider</code> and real backends obtained via
+<code>QiskitRuntimeService</code> (see <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit-ibm-runtime/runtime-service">external link</a>).</p>
+<p><strong><code>run_options</code></strong> — control per-execution parameters:</p>
+<p>Currently, the only supported key is <code>"shots"</code>, which determines
+the number of measurement samples per execution. If omitted, the
+default is 1024 shots.</p>
+<pre class="highlight"><code class="language-python">run_options = {
+    "shots": 4096,   # number of measurement samples (default: 1024)
+}</code></pre>
+<p><strong><code>transpiler_options</code></strong> — passed to
+<code>qiskit.generate_preset_pass_manager(...)</code> as kwargs:</p>
+<p>These control how the quantum circuit is compiled/optimized before
+execution. The <code>backend</code> kwarg is automatically set to the
+configured <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit/qiskit.providers.BackendV2">BackendV2</a> instance; do NOT include it manually. The pass
+manager is built once during <code>__init__</code> and reused for every
+<code>execute()</code> call.</p>
+<p>The following defaults are applied if not explicitly provided:</p>
+<pre class="highlight"><code class="language-python">transpiler_options = {
+    "optimization_level": 0,             # minimal optimization
+    "layout_method": "trivial",          # identity qubit mapping
+    "routing_method": "basic",           # simple swap insertion
+    "translation_method": "translator",  # basis gate translation
+}</code></pre>
+<p>Common examples for overriding:</p>
+<pre class="highlight"><code class="language-python">transpiler_options = {
+    "optimization_level": 2,   # 0-3, higher = more optimization
+    "seed_transpiler": 42,     # for reproducible transpilation
+    "coupling_map": None,      # override backend coupling map
+}</code></pre>
+<p>Full list: see the <a href="https://docs.quantum.ibm.com/api/qiskit/transpiler_preset">documentation</a>
+of <code>qiskit.generate_preset_pass_manager()</code>.</p>
+<p><strong><code>sampler_options</code></strong> — passed to <code>SamplerV2.options.update(...)</code>
+after construction:</p>
+<p>These configure the <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit-ibm-runtime/sampler-v2">SamplerV2</a> primitive instance (e.g. simulator
+seed for reproducibility on fake backends, execution mode settings).
+They are set once at construction time and persist across all
+<code>execute()</code> calls (unless temporarily overridden by
+<code>simulator_seed</code>).</p>
+<p>Common examples:</p>
+<pre class="highlight"><code class="language-python">sampler_options = {
+    "simulator": {
+        "seed_simulator": 42,   # for reproducible simulation results
+    },
+}</code></pre>
+<p>Full list: see <code>qiskit_ibm_runtime.options.SamplerOptions</code>
+<a href="https://docs.quantum.ibm.com/api/qiskit-ibm-runtime/qiskit_ibm_runtime.options.SamplerOptions">documentation</a>.</p>
+<h5 id="qace.execution._ibm_runtime.IBMRuntimeExecutor--example-usage">Example usage<a class="headerlink" href="#qace.execution._ibm_runtime.IBMRuntimeExecutor--example-usage" title="Permanent link">¶</a></h5>
+<pre class="highlight"><code class="language-python">from qiskit_ibm_runtime.fake_provider import FakeManilaV2
+from qace.execution import IBMRuntimeExecutor, IBMRuntimeExecutionConfig
+
+config = IBMRuntimeExecutionConfig(
+    backend_options={"backend": FakeManilaV2()},
+    run_options={"shots": 4096},
+    transpiler_options={"optimization_level": 2, "seed_transpiler": 42},
+    sampler_options={"simulator": {"seed_simulator": 42}},
+)
+executor = IBMRuntimeExecutor(config)
+result = executor.execute(circuit)
+print(result.counts)</code></pre>
+
+        <p>Initializes the executor with the given configuration.</p>
+<p>Constructs the preset pass manager and the <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit-ibm-runtime/sampler-v2">SamplerV2</a> instance at
+construction time so they can be reused across multiple
+<code>execute()</code> calls:</p>
+<pre class="highlight"><code class="language-python">self._passmanager = generate_preset_pass_manager(
+    backend=self._backend, **config.transpiler_options
+)
+self._sampler = SamplerV2(mode=self._backend)
+self._sampler.options.update(**config.sampler_options)</code></pre>
+<p>The pass manager is configured with the following defaults if not
+explicitly specified in <code>config.transpiler_options</code>:</p>
+<ul>
+<li><code>optimization_level</code>: 0</li>
+<li><code>layout_method</code>: "trivial"</li>
+<li><code>routing_method</code>: "basic"</li>
+<li><code>translation_method</code>: "translator"</li>
+</ul>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>config</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="IBMRuntimeExecutionConfig(run_options=dict(), transpiler_options=dict(), backend_options=dict(), skip_transpilation=False, sampler_options=dict())
+
+  
+      dataclass
+   (qace.execution._ibm_runtime.IBMRuntimeExecutionConfig)" href="#qace.execution._ibm_runtime.IBMRuntimeExecutionConfig">IBMRuntimeExecutionConfig</a> | None</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>An IBMRuntimeExecutionConfig instance. If None, a
+default configuration is used.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="RuntimeError">RuntimeError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If 'backend' is missing from
+backend_options or is not a <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit/qiskit.providers.BackendV2">BackendV2</a> instance.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+                  <details class="quote">
+                    <summary>Source code in <code>src/qace/execution/_ibm_runtime.py</code></summary>
+                    <pre class="highlight"><code class="language-python">def __init__(self, config: IBMRuntimeExecutionConfig | None = None):
+    """Initializes the executor with the given configuration.
+
+    Constructs the preset pass manager and the [SamplerV2](https://quantum.cloud.ibm.com/docs/en/api/qiskit-ibm-runtime/sampler-v2) instance at
+    construction time so they can be reused across multiple
+    ``execute()`` calls:
+
+    ```python
+    self._passmanager = generate_preset_pass_manager(
+        backend=self._backend, **config.transpiler_options
+    )
+    self._sampler = SamplerV2(mode=self._backend)
+    self._sampler.options.update(**config.sampler_options)
+    ```
+
+    The pass manager is configured with the following defaults if not
+    explicitly specified in ``config.transpiler_options``:
+
+    - ``optimization_level``: 0
+    - ``layout_method``: "trivial"
+    - ``routing_method``: "basic"
+    - ``translation_method``: "translator"
+
+    Args:
+        config: An IBMRuntimeExecutionConfig instance. If None, a
+            default configuration is used.
+
+    Raises:
+        RuntimeError: If 'backend' is missing from
+            backend_options or is not a [BackendV2](https://quantum.cloud.ibm.com/docs/en/api/qiskit/qiskit.providers.BackendV2) instance.
+    """
+    super().__init__()
+    self.config = copy.deepcopy(config) or IBMRuntimeExecutionConfig()
+    backend = self.config.backend_options.get("backend")
+
+    if backend is None:
+        raise RuntimeError(
+            "backend_options must contain a 'backend' key with "
+            "a BackendV2 instance."
+        )
+    if not isinstance(backend, BackendV2):
+        raise RuntimeError(
+            f"backend_options['backend'] must be a BackendV2 instance, "
+            f"got {type(backend).__name__}."
+        )
+
+    self._backend = backend
+
+    # setup pass manager for circuit transpilation
+    self.config.transpiler_options["backend"] = self._backend
+    self.config.transpiler_options.setdefault("optimization_level", 0)
+    self.config.transpiler_options.setdefault("layout_method", "trivial")
+    self.config.transpiler_options.setdefault("routing_method", "basic")
+    self.config.transpiler_options.setdefault("translation_method", "translator")
+    try:
+        self._passmanager = generate_preset_pass_manager(
+            **self.config.transpiler_options,
+        )
+    except Exception as e:
+        raise RuntimeError(
+            f"Failed to set up pass manager with options "
+            f"{self.config.transpiler_options}: {e}"
+        ) from e
+
+    self._sampler = self._build_sampler()</code></pre>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="qace.execution._ibm_runtime.IBMRuntimeExecutor.execute" class="doc doc-heading">
+            <code class="highlight language-python">execute(circuit, simulator_seed=None)</code>
+
+<a href="#qace.execution._ibm_runtime.IBMRuntimeExecutor.execute" class="headerlink" title="Permanent link">¶</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Executes a quantum circuit using IBM Runtime <a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit-ibm-runtime/sampler-v2">SamplerV2</a>.</p>
+<p>Uses the pass manager and sampler that were constructed during
+<code>__init__</code>. Internally performs:</p>
+<pre class="highlight"><code class="language-python"># 1) Transpile via the pre-built pass manager
+transpiled = self._passmanager.run(circuit)
+
+# 2) Run via the pre-built sampler
+shots = self.config.run_options.get("shots", 1024)
+job = self._sampler.run([transpiled], shots=shots)
+result = job.result()
+counts = result[0].data.get_counts()</code></pre>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>circuit</code></b>
+                  (<code><span title="qiskit.QuantumCircuit">QuantumCircuit</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The quantum circuit to execute.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>simulator_seed</code></b>
+                  (<code><span title="int">int</span> | None</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>If not None, overrides the sampler's
+simulator.seed_simulator for this execution.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="ExecutionResult(counts, result, metadata)
+
+  
+      dataclass
+   (qace.execution._base.ExecutionResult)" href="../base/#qace.execution._base.ExecutionResult">ExecutionResult</a></code>
+              –
+              <div class="doc-md-description">
+                <p>An ExecutionResult containing counts, the raw result, and metadata.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name">
+    <col class="field-body">
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="RuntimeError">RuntimeError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If transpilation or execution fails.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/qace/execution/_ibm_runtime.py</code></summary>
+              <pre class="highlight"><code class="language-python">def execute(
+    self, circuit: QuantumCircuit, simulator_seed: int | None = None
+) -&gt; ExecutionResult:
+    """Executes a quantum circuit using IBM Runtime [SamplerV2](https://quantum.cloud.ibm.com/docs/en/api/qiskit-ibm-runtime/sampler-v2).
+
+    Uses the pass manager and sampler that were constructed during
+    ``__init__``. Internally performs:
+
+    ```python
+    # 1) Transpile via the pre-built pass manager
+    transpiled = self._passmanager.run(circuit)
+
+    # 2) Run via the pre-built sampler
+    shots = self.config.run_options.get("shots", 1024)
+    job = self._sampler.run([transpiled], shots=shots)
+    result = job.result()
+    counts = result[0].data.get_counts()
+    ```
+
+    Args:
+        circuit: The quantum circuit to execute.
+        simulator_seed: If not None, overrides the sampler's
+            simulator.seed_simulator for this execution.
+
+    Returns:
+        An ExecutionResult containing counts, the raw result, and metadata.
+
+    Raises:
+        RuntimeError: If transpilation or execution fails.
+    """
+    # 0) Apply simulator seed override
+    original_seed = self._get_configured_seed()
+    if simulator_seed is not None:
+        self._sampler.options.simulator.seed_simulator = simulator_seed
+
+    try:
+        # 1) Transpilation
+        if self.config.skip_transpilation:
+            transpiled = circuit
+            transpile_time = 0.0
+        else:
+            try:
+                start_transpile = time.perf_counter()
+                transpiled = self._passmanager.run(circuit)
+                transpile_time = time.perf_counter() - start_transpile
+            except Exception as e:
+                raise RuntimeError(f"Failed to transpile circuit: {e}") from e
+
+        # 2) Execution via SamplerV2
+        shots = self.config.run_options.get("shots", 1024)
+        start_execution = time.perf_counter()
+        try:
+            job = self._sampler.run([transpiled], shots=shots)
+            result = job.result()
+        except Exception as e:
+            raise RuntimeError(
+                f"Failed to execute circuit on backend "
+                f"'{getattr(self._backend, 'name', 'unknown')}': {e}"
+            ) from e
+        execution_time = time.perf_counter() - start_execution
+
+        # 3) Extract counts
+        counts = self._extract_counts(result)
+
+        return ExecutionResult(
+            counts=counts,
+            result=result,
+            metadata={
+                "transpiled_depth": transpiled.depth(),
+                "transpiled_gate_count": transpiled.size(),
+                "transpile_time_s": transpile_time,
+                "execution_time_s": execution_time,
+                "total_time_s": transpile_time + execution_time,
+            },
+        )
+    finally:
+        # Restore original seed state
+        if simulator_seed is not None:
+            self._restore_seed(original_seed)</code></pre>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../aer/" class="btn btn-neutral float-left" title="Aer Executor"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../iterative/" class="btn btn-neutral float-right" title="Iterative Executor">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Fraunhofer-AISEC/qace-sdk" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../aer/" style="color: #fcfcfc">« Previous</a></span>
+    
+    
+      <span><a href="../iterative/" style="color: #fcfcfc">Next »</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body></html>
