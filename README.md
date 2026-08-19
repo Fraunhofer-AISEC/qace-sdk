@@ -24,7 +24,7 @@ algorithm, and the execution of the resulting circuit on a backend. Because thes
 each component can be exchanged independently, ranging from a local simulator to physical IBM Quantum hardware, without
 modifying the algorithm itself.
 
-For more information, see the [documentation](PLACEHOLDER).
+For more information, see the [documentation](https://fraunhofer-aisec.github.io/qace-sdk/).
 
 ## The Three Layers
 
@@ -132,7 +132,7 @@ The API is still evolving and may change before the first stable release.
 
 ## License
 
-Apache-2.0 — see the [LICENSE](LICENSE) file, or contact the authors for details.
+Apache-2.0 — see the [LICENSE](https://github.com/Fraunhofer-AISEC/qace-sdk/blob/main/LICENSE) file, or contact the authors for details.
 
 ## Contact
 For questions or feedback:
