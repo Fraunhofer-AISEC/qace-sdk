@@ -68,7 +68,16 @@ graph TB
 ```
 
 ## Installation
+Regardless of whether qace is installed via pip or from source,
+we encourage the user to use a virtual environment.
+### From PyPI Package
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install qace
+```
 
+### From Source
 ```bash
 git clone https://github.com/Fraunhofer-AISEC/qace-sdk.git
 cd qace-sdk
