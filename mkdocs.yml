@@ -83,3 +83,7 @@ nav:
           - Biased Function RS: vbf/biased_rs.md
           - Binary: vbf/binary.md
           - Circuit Conventions: vbf/circuit_conventions.md
+  - About:
+      - Privacy Policy: about/privacy_policy.md
+      - Imprint: https://www.aisec.fraunhofer.de/en/imprint.html
+      - Changelog: about/changelog.md

@@ -2,3 +2,4 @@
 .idea
 .venv
 /docs/.plantuml-cache/*
+/site/*

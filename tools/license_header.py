@@ -414,9 +414,14 @@ def main(argv: list[str] | None = None) -> int:
         update_file(f, header, style, args.encoding, args.dry_run) for f in files
     )
 
+    # license_header.py should run in an automated test workflow returning 1 means
+    # the user has forgotten to add a license header.
+    exit_code = changed
+
     action = "would change" if args.dry_run else "changed"
     print(f"Done. {action} {changed} of {len(files)} file(s).")
-    return 0
+
+    return exit_code
 
 
 if __name__ == "__main__":
