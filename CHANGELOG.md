@@ -15,6 +15,12 @@ limitations under the License.
 -->
 ## [Unreleased]
 
+## [1.0.1] - 2026-08-20
+
+### Release on PyPI
+
+- Version raise for the release on PyPI
+
 ## [1.0.0] - 2026-08-20
 
 ### Added
@@ -25,5 +31,6 @@ limitations under the License.
   for a feature overview, installation instructions, and usage examples.
 - Licensed under the Apache License, Version 2.0.
 
-[Unreleased]: https://github.com/Fraunhofer-AISEC/qace-sdk/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/Fraunhofer-AISEC/qace-sdk/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/Fraunhofer-AISEC/qace-sdk/releases/tag/v1.0.1
 [1.0.0]: https://github.com/Fraunhofer-AISEC/qace-sdk/releases/tag/v1.0.0
