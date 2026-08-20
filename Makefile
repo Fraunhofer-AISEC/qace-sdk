@@ -66,10 +66,14 @@ format: install-dev
 # --- License ---
 # Apply license headers to all relevant files
 license-header: install-dev
-	@for t in .py .md .yml .yaml .toml; do \
+	@code=0; \
+	for t in .py .md .yml .yaml .toml; do \
 		./tools/license_header.py . -e $$t; \
-	done
-	./tools/license_header.py . -n Makefile
+		code=$$((code + $$?)); \
+	done; \
+	./tools/license_header.py . -n Makefile; \
+	code=$$((code + $$?)); \
+	exit $$code
 
 # --- Cleanup ---
 clean:

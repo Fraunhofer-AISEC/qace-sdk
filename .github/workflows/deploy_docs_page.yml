@@ -16,28 +16,11 @@ name: Docs CI/CD
 on:
   push:
     branches: [main]
-  pull_request:
 
 permissions:
   contents: write
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v7
-
-      - name: Setup Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: '3.12'
-          cache: 'pip'
-          cache-dependency-path: pyproject.toml
-
-      - name: Test docs build
-        run: make docs-build-strict
-
   deploy:
     needs: test
     if: github.ref == 'refs/heads/main'

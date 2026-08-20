@@ -39,5 +39,8 @@ jobs:
       - name: Check coding conventions
         run: make format
 
+      - name: Check license headers
+        run: make license-header
+
       - name: Check docs build
         run: make docs-build-strict
