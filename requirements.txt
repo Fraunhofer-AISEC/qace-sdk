@@ -81,7 +81,7 @@ soupsieve==2.9.1
 stevedore==5.9.0
 typing-inspection==0.4.2
 typing_extensions==4.16.0
-urllib3==2.7.0
+urllib3==2.8.0
 virtualenv==21.7.0
 watchdog==6.0.0
 wcmatch==11.0
