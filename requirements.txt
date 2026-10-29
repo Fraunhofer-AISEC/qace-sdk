@@ -3,7 +3,7 @@ antlr4-python3-runtime==4.13.2
 beartype==0.22.9
 beautifulsoup4==4.15.0
 bitarray==3.9.1
-black==26.5.1
+black==26.10.1
 bracex==3.0.1
 certifi==2026.7.22
 cffi==2.1.0
