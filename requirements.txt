@@ -77,7 +77,7 @@ scipy==1.18.0
 selectolax==0.4.11
 setuptools==83.0.0
 six==1.17.0
-soupsieve==2.9.1
+soupsieve==4.0
 stevedore==5.9.0
 typing-inspection==0.4.2
 typing_extensions==4.16.0
