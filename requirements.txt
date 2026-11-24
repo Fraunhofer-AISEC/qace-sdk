@@ -75,7 +75,7 @@ rustworkx==0.18.0
 samplomatic==0.20.0
 scipy==1.18.0
 selectolax==0.4.11
-setuptools==83.0.0
+setuptools==84.1.0
 six==1.17.0
 soupsieve==2.9.1
 stevedore==5.9.0
