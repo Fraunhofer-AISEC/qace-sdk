@@ -85,5 +85,5 @@ nav:
           - Circuit Conventions: vbf/circuit_conventions.md
   - About:
       - Privacy Policy: about/privacy_policy.md
-      - Imprint: https://www.aisec.fraunhofer.de/en/imprint.html
+      - Imprint: about/imprint.md
       - Changelog: about/changelog.md
